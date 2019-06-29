@@ -1,13 +1,44 @@
-<div class="wrap">
+<?php
+global $global_meli;
+global $global_meli_code;
+global $global_meli_tokens; 
 
-<h1><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?> > Products</h1>
+$wp_mercadolibre_sync_settings = wp_mercadolibre_sync_settings();
+extract($wp_mercadolibre_sync_settings); 
+
+?>
+<div class="wpmlsync__postbox-container">
+  
+  <div class="wpmlsync__postbox-inner">
+    
+    <div class="wpmlsync__card">
+      <h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?> > <?php echo __( 'Debug', 'wp-mercadolibre-sync' ); ?></h1>
+    </div>
+
+    <div class="wpmlsync__row">
+
+      <div class="wpmlsync__col w-33">
+        <div class="wpmlsync__card">
+          <h3 class="wpmlsync__postbox-subtitle">Cerar usuario test:</h3>
+          <p>Para crear un usuario test desde este lugar primero debes autentificarte con un usuario real.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .wpmlsync__postbox-inner -->
+</div><!-- .wpmlsync__postbox-container -->
+
+<div class="clear"></div>
+<!-- #post-body-content end -->
+
+<div class="wrap">
+ 
 
 <?php 
 
 // Test para publicar un item a ver que pasa....  
 
-  $wp_mercadolibre_sync_settings = wp_mercadolibre_sync_settings();
-  extract($wp_mercadolibre_sync_settings); 
+  
 	$meli = new Meli($appId, $secretKey);
 
 	
@@ -16,7 +47,7 @@
 <form action='<?php $admin_url = admin_url('admin.php'); echo $admin_url; ?>' method='get'>
  
     <input type="hidden" readonly id="test_user" name="test_user" class="regular-text" value="1" >
-    <input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-products" >
+    <input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-debug" >
     <?php 
     if(isset($_GET['test_user'])){
       $body['site_id'] = 'MLU';
@@ -24,7 +55,7 @@
       $params = array(
         'access_token'=>$access_token
       );
-      $response = $meli->post('/users/test_user', $body, $params);
+      $response = $global_meli->post('/users/test_user', $body, $params);
       echo "<p>Se ha generado el siguiete usuario test:</p>";
       echo '<pre>';
       print_r($response);
@@ -89,7 +120,7 @@
      // print_r($wp_mercadolibre_sync_get_item_test);
     echo '</pre>'; 
 
-    $response = $meli->post('/items', $wp_mercadolibre_sync_get_item_test, $params); 
+    $response = $global_meli->post('/items', $wp_mercadolibre_sync_get_item_test, $params); 
     echo "<h4>Success! Your test item was listed!</h4>";
     echo "<p>Go to the permalink to see how it's looking in our site.</p>";
     echo '<a target="_blank" class="" href="'.$response["body"]->permalink.'">'.$response["body"]->permalink.'</a><br />';

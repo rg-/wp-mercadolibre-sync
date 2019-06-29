@@ -166,10 +166,8 @@ class Wp_Mercadolibre_Sync {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		/*
-		
-		#SESSION_NOT
-
+		/* 
+		#SESSION_NOT 
 		$this->loader->add_action( 'init', $plugin_admin, 'session_init', 1 );
 		$this->loader->add_action( 'wp_logout', $plugin_admin, 'session_end' );
 		$this->loader->add_action( 'wp_login', $plugin_admin, 'session_end');
@@ -178,8 +176,10 @@ class Wp_Mercadolibre_Sync {
 
 		// $this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup', 99 );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_settings_init' );
-
+		if ( is_blog_admin() ) {
+			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_settings_init', 1 );
+		}
+		$this->loader->add_action( 'admin_body_class', $plugin_admin, 'admin_body_class' );
 	}
 
 	/**
@@ -196,7 +196,7 @@ class Wp_Mercadolibre_Sync {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		
+		// USED???
 		$this->loader->add_filter( 'wp_mercadolibre_sync/template/get_item', $plugin_public, 'template_get_item' ); 
 
 	}

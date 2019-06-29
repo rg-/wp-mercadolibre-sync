@@ -1,7 +1,6 @@
 <?php 
-$n = new Wp_Mercadolibre_Sync();
-
-echo $n->get_plugin_name(); 
+$n = new Wp_Mercadolibre_Sync(); 
+//echo $n->get_plugin_name(); 
 
 $meli = new Meli($appId, $secretKey);
 $seller_id = wp_mercadolibre_sync_settings('seller_id'); 

@@ -3,11 +3,11 @@
 function wp_mercadolibre_sync_meli_code_array(){
 	$meli_code_array = array(
 			0 => array(
-				'desc' => 'Hola, aún no hay datos guardados. Completa los datos de <b>appId</b>, <b>secretKey</b> y <b>redirectURI</b>.',
+				'desc' => 'Estás a solo 2 pasos para dejar funcionando el sistema correctamente. <br><br>Paso 1: Completa los datos de API Settings, <b>appId</b>, <b>secretKey</b> y <b>redirectURI</b> que obtendrás creando una aplicación en tu cuenta de Mercado Libre.',
 				'html' => '',
 			),
 			1 => array(
-				'desc' => 'Los datos API estan guardados, aún falta autentificar para continuar.',
+				'desc' => '',
 				'html' => ''
 			),
 			2 => array(
@@ -19,19 +19,19 @@ function wp_mercadolibre_sync_meli_code_array(){
 				'html' => ''
 			),
 			4 => array(
-				'desc' => 'Muy bien, se ha autorizado la API. Ahora debes <b>Guardar cambios</b> antes de salir.',
+				'desc' => 'Muy bien, se ha autorizado la API. Los datos han sido guardados.',
 				'html' => ''
 			),
 			5 => array(
-				'desc' => '',
+				'desc' => 'Se han refrescado los tokens y tiempo de expiración. Los datos han sido guardados.',
 				'html' => ''
 			),
 			6 => array(
-				'desc' => 'Excelente, tu API vinculada correctamente. Revisa el estado y otras opciones para mas detalles.',
+				'desc' => 'Excelente, tu API está vinculada correctamente. Revisa el estado y otras opciones para mas detalles.',
 				'html' => ''
 			),
 			7 => array(
-				'desc' => 'Debes autentificar tu aplicación. Serás redireccionado para logearte con tu usuario con el cual previamente has creado tu app. Volverás luego a esta pagina con un "code" para generar los tokens.',
+				'desc' => 'Paso 1 terminado, los datos API estan guardados.<br><br>Paso 2: Ahora debes autentificar tu aplicación. Apreta el botón "Authorize your APP", serás redireccionado para logearte con tu usuario, en el cual has creado ademas la aplicacion a vincular.<br><br>Una vez logeado serás redireccionado nuevamente a esta pagina y los datos se guardarán automaticamente. Por favor no cierres las sesión mientras esto sucede.',
 				'html' => ''
 			), 
 		);
@@ -45,6 +45,7 @@ function wp_mercadolibre_sync_meli_code_array(){
 			'secretKey' => $options['wp_mercadolibre_sync_secretKey'],
 			'redirectURI' => $options['wp_mercadolibre_sync_redirectURI'],
 			'siteId' => $options['wp_mercadolibre_sync_siteId'],
+
 			'access_token' => $options['wp_mercadolibre_sync_access_token'],
 			'expires_in' => $options['wp_mercadolibre_sync_expires_in'],
 			'refresh_token' => $options['wp_mercadolibre_sync_refresh_token'],
@@ -56,6 +57,17 @@ function wp_mercadolibre_sync_meli_code_array(){
 		}else{
 			return $out;
 		} 
+	}
+
+	function wp_mercadolibre_sync_update_settings($args=array()){
+		if(!empty($args)){
+				$_temp_options = get_option( 'wp_mercadolibre_sync_settings' );
+				$_temp_options['wp_mercadolibre_sync_access_token'] = $args['access_token'];
+				$_temp_options['wp_mercadolibre_sync_expires_in'] = time() + $args['expires_in'];
+				$_temp_options['wp_mercadolibre_sync_refresh_token'] = $args['refresh_token'];
+				$_temp_options['wp_mercadolibre_sync_seller_id'] = $args['seller_id'];
+				update_option( 'wp_mercadolibre_sync_settings', $_temp_options );
+		}
 	}
 
 function wp_mercadolibre_sync_get_seller_id($meli, $access_token){

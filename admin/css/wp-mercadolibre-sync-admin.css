@@ -2,19 +2,14 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-.toplevel_page_wp-mercadolibre-sync #wpcontent {
+.wp-mercadolibre-sync #wpcontent {
   padding-left: 0; }
-
-.toplevel_page_wp-mercadolibre-sync #poststuff {
+.wp-mercadolibre-sync #poststuff {
   padding-top: 0; }
-
-.toplevel_page_wp-mercadolibre-sync #post-body-content {
+.wp-mercadolibre-sync #post-body-content {
   padding-top: 10px;
   padding-left: 20px;
   margin-bottom: 0px; }
-
-.wpmlsync__wrap {
-  margin: 0; }
 
 .wpmlsync__button {
   padding: 1em !important;
@@ -35,17 +30,10 @@
   margin: 1em auto;
   background-color: #f1f1f1; }
 
- /* 
-
-	.wpmlsync__postbox-[TAG]
-
- */
-.wpmlsync__postbox-container {
-  padding: 1em; }
-
 .wpmlsync__postbox-inner {
   padding: 1em;
-  background-color: #fff; }
+  background-color: #fff;
+  margin-bottom: 2em; }
 
 .wpmlsync__postbox-title {
   font-size: 20px !important;
@@ -58,7 +46,19 @@
   position: relative; }
 
 .wpmlsync__row {
-  display: flex; }
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+.wpmlsync__col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative; }
 
 .wpmlsync__card {
   padding: 20px; }
@@ -69,15 +69,46 @@
   box-shadow: none !important;
   width: 100%; }
 
-.w-100 {
-  width: 100%; }
+.wpmlsync__admin_container {
+  margin-right: auto;
+  margin-left: auto; }
 
-.w-50 {
-  width: 50%; }
+.wpmlsync__admin_row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
 
-.w-33 {
-  width: 33.333333%; }
+.wpmlsync__admin_col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  flex: 0 0 100%;
+  max-width: 100%;
+  position: relative;
+  padding-right: 1em;
+  padding-left: 1em; }
 
+.wpmlsync__admin_card {
+  padding: 1em;
+  background-color: #fff; }
+
+@media only screen and (min-width: 850px) {
+  .w-100 {
+    width: 100%; }
+
+  .w-50 {
+    flex: 0 0 50%;
+    max-width: 50%; }
+
+  .w-33 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%; }
+
+  .w-66 {
+    flex: 0 0 66.666666%;
+    max-width: 66.666666%; } }
 .wpmlsync__ul {
   padding: 0; }
 

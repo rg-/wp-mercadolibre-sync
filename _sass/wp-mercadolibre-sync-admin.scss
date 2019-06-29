@@ -2,73 +2,78 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
- .toplevel_page_wp-mercadolibre-sync #wpcontent{ 
- 		    padding-left: 0; 
- }
- .toplevel_page_wp-mercadolibre-sync #poststuff{ 
- 		    padding-top: 0; 
- }  
+.wp-mercadolibre-sync{
+		#wpcontent{ 
+		padding-left: 0; 
+	}
+	#poststuff{ 
+		padding-top: 0; 
+	} 
+	#post-body-content{
+		padding-top: 10px;
+		padding-left: 20px; 
+		margin-bottom: 0px;
+	}
+}  
 
- .toplevel_page_wp-mercadolibre-sync #post-body-content{
- 				padding-top: 10px;
- 		    padding-left: 20px; 
- 		    margin-bottom: 0px;
- }
+.wpmlsync__wrap{ 
+}
+.wpmlsync__button{
+	padding:1em!important;
+	border-radius:0!important;
+	box-shadow:none!important;
+	text-shadow:none!important;
+	height: 48px!important;
+	line-height: 1!important;
+	font-size: 16px!important;
+}
+.wpmlsync__col_buttons{
+	text-align:center;
+	.wpmlsync__button{
+		margin: 16px;
+	}
+}
 
+.wpmlsync__msg{
+	padding:1em!important;
+	margin:1em auto;
+	background-color:#f1f1f1;
+} 
 
- .wpmlsync__wrap{
-  	margin: 0;
- }
- .wpmlsync__button{
- 	padding:1em!important;
- 	border-radius:0!important;
- 	box-shadow:none!important;
- 	text-shadow:none!important;
-  height: 48px!important;
-  line-height: 1!important;
-  font-size: 16px!important;
- }
- .wpmlsync__col_buttons{
- 	text-align:center;
- 	.wpmlsync__button{
- 		margin: 16px;
- 	}
- }
-
- .wpmlsync__msg{
- 	padding:1em!important;
- 	margin:1em auto;
- 	background-color:#f1f1f1;
- }
- /* 
-
-	.wpmlsync__postbox-[TAG]
-
- */
-
- .wpmlsync__postbox-container{ 
- 	padding:1em; 
- } 
- .wpmlsync__postbox-inner{ 
- 	padding:1em;
- 	background-color:#fff; 
- }
- .wpmlsync__postbox-title{
- 	font-size: 20px!important;
- 	padding:0!important;
- 	position:relative;
- }
- .wpmlsync__postbox-subtitle{
- 	font-size: 16px!important;
- 	padding:0!important;
- 	position:relative;
- }
+.wpmlsync__postbox-container{ 
+ 
+} 
+.wpmlsync__postbox-inner{ 
+	padding:1em;
+	background-color:#fff; 
+	margin-bottom: 2em;
+}
+.wpmlsync__postbox-title{
+	font-size: 20px!important;
+	padding:0!important;
+	position:relative;
+}
+.wpmlsync__postbox-subtitle{
+	font-size: 16px!important;
+	padding:0!important;
+	position:relative;
+}
 
 
 .wpmlsync__row{
-	display:flex;
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; 
 }
 .wpmlsync__col { 
+	-ms-flex-preferred-size: 0;
+	flex-basis: 0;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	flex: 0 0 100%;
+	max-width: 100%;
+	position: relative;
 } 
 
 .wpmlsync__card{
@@ -82,20 +87,56 @@
  	width: 100%;
  }
 
-.w-100{
+
+
+$gutter: 1em;
+.wpmlsync__admin_container {  
+    margin-right: auto;
+    margin-left: auto;
+ 
+}
+.wpmlsync__admin_row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; 
+}
+.wpmlsync__admin_col {
+	-ms-flex-preferred-size: 0;
+	flex-basis: 0;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	flex: 0 0 100%;
+	max-width: 100%;
+	position: relative; 
+  padding-right: $gutter;
+  padding-left: $gutter;
+
+}
+.wpmlsync__admin_card{
+	padding: $gutter;
+	background-color:#fff;
+}
+@media only screen and (min-width: 850px){
+	.w-100{
 	width: 100%;
-}
-.w-50{
-	width: 50%;
-}
-.w-33{
-	width: 33.333333%;
-}
+	}
+	.w-50{
+	flex: 0 0 50%;
+	max-width: 50%;
+	}
+	.w-33{
+	flex: 0 0 33.333333%;
+	max-width: 33.333333%;
+	}
+	.w-66{ 
+	flex: 0 0 66.666666%;
+	max-width: 66.666666%;
+	}
+} 
 
- .wpmlsync__ul{
-
- 	padding:0;
-
+ .wpmlsync__ul{ 
+ 	padding:0; 
  }
 
  .wpmlsync__badge{
