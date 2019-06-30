@@ -80,8 +80,19 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
                 ?>
                 <p><span class="dashicons dashicons-yes"></span> Autorizada</p>
                 <ul class="wpmlsync_ul"> 
-                    <li>appId: <b><?php echo $appId; ?></b></li>
-                    <li>seller_id: <b><?php echo $seller_id; ?></b></li> 
+                    <li>appId: <b><?php echo $appId; ?></b></li> 
+                    <?php
+                    $params = array(
+                      'access_token'=>$access_token
+                    ); 
+                    $url = '/users/me';  
+                    $meli_result = $MELI->get($url, $params); 
+                    $nickname = $meli_result['body']->nickname;
+                    $permalink = $meli_result['body']->permalink; 
+                    ?>
+                    <li><b>User details</b></li>
+                    <li>seller_id: <b><?php echo $seller_id; ?></b></li>
+                    <li>nickname: <a href="<?php echo $permalink; ?>" target="_blank"><?php echo $nickname; ?></a></li> 
                 </ul> 
                 <?php
               }else{ 
