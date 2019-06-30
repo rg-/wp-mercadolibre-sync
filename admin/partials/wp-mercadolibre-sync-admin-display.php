@@ -56,6 +56,18 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
               }else{
                 echo '<p><span class="dashicons dashicons-warning"></span> auto_token OFF</p>';
               }
+
+                $current = new DateTime(date('Y-m-d H:i:s', time()));//start time
+                $expiration = new DateTime(date('Y-m-d H:i:s', $expires_in));//end time
+                $interval = $current->diff($expiration);
+                // %Y years %m months %d days %H hours %i minutes %s seconds
+                ?>
+                <ul class="wpmlsync_ul">
+                  <li><b>Token life</b></li>
+                  <li><?php echo $interval->format('%H hours %i minutes %s seconds'); ?></li>
+                  <li>Expires in (UTC): <small><?php echo date('Y-m-d H:i:s', $expires_in); ?></small></li>
+                </ul>
+                <?php
             }else{
               if( $api_status==7 ) {
                   ?>
@@ -78,21 +90,20 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
             <?php 
               if( $api_status_ok ){
                 ?>
-                <p><span class="dashicons dashicons-yes"></span> Autorizada</p>
+                <p><span class="dashicons dashicons-yes"></span> Conectada</p>
                 <ul class="wpmlsync_ul"> 
-                    <li>appId: <b><?php echo $appId; ?></b></li> 
+                     
                     <?php
                     $params = array(
                       'access_token'=>$access_token
                     ); 
-                    $url = '/users/me';  
+                    $url = '/applications/'.$appId;  
                     $meli_result = $MELI->get($url, $params); 
-                    $nickname = $meli_result['body']->nickname;
-                    $permalink = $meli_result['body']->permalink; 
+                    $name = $meli_result['body']->name;
+                    $url = $meli_result['body']->url;
                     ?>
-                    <li><b>User details</b></li>
-                    <li>seller_id: <b><?php echo $seller_id; ?></b></li>
-                    <li>nickname: <a href="<?php echo $permalink; ?>" target="_blank"><?php echo $nickname; ?></a></li> 
+                    <li>App Id: <b><?php echo $appId; ?></b></li>
+                    <li>App name: <a href="<?php echo $url; ?>" target="_blank"><b><?php echo $name; ?></b></a></li>
                 </ul> 
                 <?php
               }else{ 
@@ -107,28 +118,32 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
       <div class="wpmlsync__col w-33">
 
           <div class="wpmlsync__card">
-            <h3 class="wpmlsync__postbox-subtitle">Token health</h3>
-            <?php  
-              if($api_status_ok){
-
+            <h3 class="wpmlsync__postbox-subtitle">Usuario</h3>
+            <?php 
+              if( $api_status_ok ){
                 ?>
-                <p><span class="dashicons dashicons-yes"></span> Activo</p>
+                <p><span class="dashicons dashicons-yes"></span> Autorizado</p>
+                <ul class="wpmlsync_ul"> 
+                     
+                    <?php
+                    $params = array(
+                      'access_token'=>$access_token
+                    );   
+                    $url = '/users/me';  
+                    $meli_result = $MELI->get($url, $params); 
+                    $nickname = $meli_result['body']->nickname;
+                    $permalink = $meli_result['body']->permalink; 
+                    ?> 
+                    <li>Seller Id: <b><?php echo $seller_id; ?></b></li>
+                    <li>Nickname: <a href="<?php echo $permalink; ?>" target="_blank"><?php echo $nickname; ?></a></li> 
+                </ul> 
                 <?php
-
-                $current = new DateTime(date('Y-m-d H:i:s', time()));//start time
-                $expiration = new DateTime(date('Y-m-d H:i:s', $expires_in));//end time
-                $interval = $current->diff($expiration);
-                // %Y years %m months %d days %H hours %i minutes %s seconds
+              }else{ 
                 ?>
-                <ul class="wpmlsync_ul">
-                  <li><?php echo $interval->format('%H hours %i minutes %s seconds'); ?></li>
-                  <li>Expires in (UTC): <small><?php echo date('Y-m-d H:i:s', $expires_in); ?></small></li>
-                </ul>
-                <?php } else { ?>
-                <p><span class="dashicons dashicons-warning"></span> No existen datos para analizar</p>
+                <p><span class="dashicons dashicons-warning"></span> No hay usuarios autorizados</p>
                 <?php
-              } 
-              ?>
+              }
+            ?>
           </div>
 
       </div>

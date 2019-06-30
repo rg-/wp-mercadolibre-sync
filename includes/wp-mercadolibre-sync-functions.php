@@ -27,11 +27,11 @@ function wp_mercadolibre_sync_meli_code_array(){
 				'html' => ''
 			),
 			6 => array(
-				'desc' => 'Excelente, tu API está vinculada correctamente. Revisa el estado y otras opciones para mas detalles.',
+				'desc' => 'Excelente, tu API está vinculada correctamente. ',
 				'html' => ''
 			),
 			7 => array(
-				'desc' => 'Paso 1 terminado, los datos API estan guardados.<br><br>Paso 2: Ahora debes autentificar tu aplicación. Apreta el botón "Authorize your APP", serás redireccionado para logearte con tu usuario, en el cual has creado ademas la aplicacion a vincular.<br><br>Una vez logeado serás redireccionado nuevamente a esta pagina y los datos se guardarán automaticamente. Por favor no cierres las sesión mientras esto sucede.',
+				'desc' => 'Debes autentificar tu aplicación. Apreta el botón "Authorize your APP", serás redireccionado para logearte con tu usuario, en el cual has creado ademas la aplicacion a vincular.<br><br>Una vez logeado serás redireccionado nuevamente a esta pagina y los datos se guardarán automaticamente. Por favor no cierres las sesión mientras esto sucede.',
 				'html' => ''
 			), 
 			8 => array(
