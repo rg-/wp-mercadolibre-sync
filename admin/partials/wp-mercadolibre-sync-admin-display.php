@@ -16,40 +16,48 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. --> 
-<?php
-
-global $global_meli;
-global $global_meli_code;
-global $global_meli_tokens; 
-
+<?php  
 // get api settings from options
 $wp_mercadolibre_sync_settings = wp_mercadolibre_sync_settings();
 // extract varis like $appId, $secretKey...
-extract($wp_mercadolibre_sync_settings); 
+extract($wp_mercadolibre_sync_settings);  
+ 
+$MELI = new Meli($appId, $secretKey);  
+$api_status = wp_mercadolibre_sync_get_api_status();
+$meli_code_array = wp_mercadolibre_sync_meli_code_array(); 
 
-$meli_code_array = wp_mercadolibre_sync_meli_code_array();  
+$api_status_ok = false;
+if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
+  $api_status_ok = true;
+}
+
 ?>
+<h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?></h1>
+<div class="clear"></div>
+<br>
 
 <div class="wpmlsync__postbox-container">
   
   <div class="wpmlsync__postbox-inner">
-    
-    <div class="wpmlsync__card">
-      <h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?></h1>
-    </div>
 
     <div class="wpmlsync__row">
 
       <div class="wpmlsync__col w-33">
         <div class="wpmlsync__card">
             <h3 class="wpmlsync__postbox-subtitle">Estado del sistema</h3>
-            <?php
-            if( $global_meli_code==6 || $global_meli_code==4 || $global_meli_code==5){
+            <?php 
+
+            if( $api_status_ok ){
               ?>
               <p><span class="dashicons dashicons-yes"></span> API conectada</p>
               <?php
+              if(!empty($auto_token)){
+                echo '<p><span class="dashicons dashicons-yes"></span> auto_token ON</p>';
+              }else{
+                echo '<p><span class="dashicons dashicons-warning"></span> auto_token OFF</p>';
+              }
             }else{
-              if( $global_meli_code==7 ) {
+              if( $api_status==7 ) {
                   ?>
                   <p><span class="dashicons dashicons-warning"></span> Autentificar la aplicación</p>
                   <?php
@@ -57,9 +65,9 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
                    ?>
                   <p><span class="dashicons dashicons-warning"></span> No hay datos seteados</p>
                   <?php
-                }
-             
+                } 
             }
+            echo "<p>api_status: ".$api_status."</p>";
             ?> 
         </div>
       </div>
@@ -68,9 +76,13 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
         <div class="wpmlsync__card">
             <h3 class="wpmlsync__postbox-subtitle">Applicacion</h3>
             <?php 
-              if( $global_meli_code==6 || $global_meli_code==4 || $global_meli_code==5){
+              if( $api_status_ok ){
                 ?>
                 <p><span class="dashicons dashicons-yes"></span> Autorizada</p>
+                <ul class="wpmlsync_ul"> 
+                    <li>appId: <b><?php echo $appId; ?></b></li>
+                    <li>seller_id: <b><?php echo $seller_id; ?></b></li> 
+                </ul> 
                 <?php
               }else{ 
                 ?>
@@ -78,13 +90,6 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
                 <?php
               }
             ?>
-            <ul class="wpmlsync_ul">
-              <?php if($global_meli_code==6 || $global_meli_code==4 || $global_meli_code==5){ ?>
-                <li>appId: <b><?php echo $appId; ?></b></li>
-                <li>seller_id: <b><?php echo $seller_id; ?></b></li>
-              <?php } ?>
-            </ul> 
-
         </div>
       </div>
 
@@ -93,7 +98,7 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
           <div class="wpmlsync__card">
             <h3 class="wpmlsync__postbox-subtitle">Token health</h3>
             <?php  
-              if($global_meli_code==6 || $global_meli_code==4 || $global_meli_code==5){
+              if($api_status_ok){
 
                 ?>
                 <p><span class="dashicons dashicons-yes"></span> Activo</p>
@@ -111,16 +116,6 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
                 <?php } else { ?>
                 <p><span class="dashicons dashicons-warning"></span> No existen datos para analizar</p>
                 <?php
-              }
-              $_check_expires_in = !empty($expires_in) ? $expires_in : 0;
-              if( $_check_expires_in < time()) {  
-                  // echo "<p>Token expirado.</p>";
-                }else{ 
-                  
-                }  
-
-              if($global_meli_code==5){  
-
               } 
               ?>
           </div>
@@ -133,24 +128,23 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
     <div class="wpmlsync__row">
       <div class="wpmlsync__col w-100 wpmlsync__col_buttons">
       
-      <?php echo '<p>'.$meli_code_array[$global_meli_code]['desc'].'</p>';?>  
+      <?php echo '<p>'.$meli_code_array[$api_status]['desc'].'</p>';?>  
 
       <?php  
 
-        if( $global_meli_code==0 ){
+        if( $api_status==0 ){
           echo '<a class="button button-secondary wpmlsync__button" href="https://applications.mercadolibre.com/" target="_blank">Manage your Mercado Libre applications</a>';
         }else{
           $oAuth_button_text = 'Autorize API';
-          if($global_meli_code==4 || $global_meli_code==6){
+          if($api_status==4 || $api_status==6){
             $oAuth_button_text = 'Refresh API Autorization';
           } 
-          echo '<a class="button button-primary wpmlsync__button" href="' . $global_meli->getAuthUrl($redirectURI, Meli::$AUTH_URL[$siteId]) . '"><span class="dashicons dashicons-shield-alt"></span> '.$oAuth_button_text.'</a>';  
+          echo '<a class="button button-primary wpmlsync__button" href="' . $MELI->getAuthUrl($redirectURI, Meli::$AUTH_URL[$siteId]) . '"><span class="dashicons dashicons-shield-alt"></span> '.$oAuth_button_text.'</a>';  
           echo '<a class="button button-secondary wpmlsync__button" href="' . $redirectURI . '&refresh_token=1"><span class="dashicons dashicons-update-alt"></span> Manual refresh token</a>'; 
           echo '<a class="button button-secondary wpmlsync__button" href="https://applications.mercadolibre.com/" target="_blank">Manage your Mercado Libre applications</a>';
         } 
-      ?>
+      ?> 
 
-      <?php echo '<p>code '.$global_meli_code.'</p>';?>
       </div>
     </div>
     <!-- .wpmlsync__row -->
@@ -162,8 +156,8 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
 <!-- #post-body-content end -->
 
 <!-- -->
-
 <form action='options.php' method='post'>
+
   <?php
   settings_fields( 'wp_mercadolibre_sync_api' );
   ?>
@@ -191,11 +185,6 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
       do_settings_sections( 'wp-mercadolibre-sync-advanced' ); 
       ?>
       </div>
-      <div class="wpmlsync__col w-100 wpmlsync__col_buttons">
-        <?php 
-        submit_button('Guardar Cambios', 'button button-primary wpmlsync__button', 'submit', false); 
-        ?>
-      </div>
     </div>
   </div>
 
@@ -207,6 +196,16 @@ $meli_code_array = wp_mercadolibre_sync_meli_code_array();
       <div class="wpmlsync__card">
         <?php
         do_settings_sections( 'wp-mercadolibre-sync-private' ); 
+        ?>
+      </div>
+    </div>
+  </div>
+
+  <div class="wpmlsync__postbox-container">
+    <div class="wpmlsync__postbox-inner">
+      <div class="wpmlsync__col w-100 wpmlsync__col_buttons">
+        <?php 
+        submit_button('Guardar Cambios', 'button button-primary wpmlsync__button', 'submit', false); 
         ?>
       </div>
     </div>

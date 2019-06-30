@@ -3,11 +3,6 @@
 /**
  * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
  * @link              https://github.com/rg-
  * @since             1.0.0
  * @package           Wp_Mercadolibre_Sync
@@ -16,7 +11,7 @@
  * Plugin Name:       WP Mercadolibre Sync
  * Plugin URI:        https://github.com/rg-/wp-mercadolibre-sync
  * Description:       Wordpress & Mercadolibre syncronization using APIs.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Roberto García
  * Author URI:        https://github.com/rg-
  * License:           GPL-2.0+
@@ -36,7 +31,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.0' );
+define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.1' );
 
 /**
  * The code that runs during plugin activation.

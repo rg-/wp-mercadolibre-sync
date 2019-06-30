@@ -146,43 +146,75 @@ class Wp_Mercadolibre_Sync_Admin {
 		// add_options_page('WP Mercadolibre Sync', 'WP Mercadolibre Sync', 'manage_options', $this->plugin_name, array( $this, 'wp_mercadolibre_sync_options_page' )  );
 
 	}
-	public function admin_settings_init() { 
+
+	/*
+
+	TODO, add description, see also init_settings() on public hoocks, it´s quite same thing
+
+	*/
+	public function admin_notices(){
+		$WPMLSync = wp_mercadolibre_sync_settings(); 
+		$api_status = wp_mercadolibre_sync_get_api_status();
+		$meli_code_array = wp_mercadolibre_sync_meli_code_array(); 
+
+		$screen = get_current_screen();
+		if(isset($screen) && $screen->parent_base == $this->plugin_name){
+
+			if( $api_status == 5 ){
+				?>
+		    <div class="notice notice-success is-dismissible">
+		        <p><?php _e( 'Token refreshed!!', 'wp-mercadolibre-sync' ); ?></p>
+		    </div>
+		    <?php
+			}
+			if( $api_status == 8 ){
+				?>
+		    <div class="notice notice-success is-dismissible">
+		        <p><?php _e( 'Re-autorized API. Token refreshed!!', 'wp-mercadolibre-sync' ); ?></p>
+		    </div>
+		    <?php
+			}
+			if( $api_status == 4 ){
+				?>
+		    <div class="notice notice-success is-dismissible">
+		        <p><?php _e( 'Perfecto!! Plugin configurado correctamente.', 'wp-mercadolibre-sync' ); ?></p>
+		    </div>
+		    <?php
+			}
+			if( $api_status == 7 ){
+				?>
+		    <div class="notice notice-warning is-dismissible">
+		        <p><?php _e( 'Plugin needs more settings.', 'wp-mercadolibre-sync' ); ?></p>
+		    </div>
+		    <?php
+			}
+
+		}
 		
-		global $global_meli;
-		global $global_meli_tokens;
-		$global_meli_tokens = array(
+	}
+	public function admin_init_settings() {
 
-				'access_token' => '',
-				'expires_in' => '',
-				'refresh_token' => '', 
-				'seller_id' => '',
-
-			);
-		global $global_meli_code;
-		$global_meli_code = 0; 
+		$api_status = 0; 
 		
 		$WPMLSync = wp_mercadolibre_sync_settings(); 
+
 		if( array_filter($WPMLSync) ){
 
-			$global_meli_code = 1;
-			$global_meli = new Meli($WPMLSync['appId'], $WPMLSync['secretKey']);
+			$api_status = 1;
+			$MELI = new Meli($WPMLSync['appId'], $WPMLSync['secretKey']);
 			$Exception = '';
 
 			if(isset($_GET['code']) || !empty($WPMLSync['access_token']) ) {
 				
-				$global_meli_code = 2;
+				$api_status = 2;
 
 				// If code exist and session is empty
 				if(isset($_GET['code']) && empty($WPMLSync['access_token'])) {
 					// //If the code was in get parameter we authorize
-					$global_meli_code = 3;
+					$api_status = 3;
 					try{
-						$user = $global_meli->authorize($_GET["code"], $WPMLSync['redirectURI']); 
-						// Passing into "$_" temp variables the autorized user access ones 
-						$_access_token = $user['body']->access_token;
-						$_expires_in = time() + $user['body']->expires_in;
-						$_refresh_token = $user['body']->refresh_token;
-						$_seller_id = wp_mercadolibre_sync_get_seller_id($global_meli, $user['body']->access_token); 
+						$user = $MELI->authorize($_GET["code"], $WPMLSync['redirectURI']);  
+						$_seller_id = wp_mercadolibre_sync_get_seller_id($MELI, $user['body']->access_token); 
 
 						wp_mercadolibre_sync_update_settings(array(
 							'access_token' => $user['body']->access_token,
@@ -191,7 +223,7 @@ class Wp_Mercadolibre_Sync_Admin {
 							'seller_id' => $_seller_id
 						));
 
-						$global_meli_code = 4;
+						$api_status = 4;
 					}catch(Exception $e){
 						$Exception .= $e->getMessage(). "\n";
 					}
@@ -199,19 +231,18 @@ class Wp_Mercadolibre_Sync_Admin {
 					
 					// Check if the access token is invalid checking time vs expires_in
 					$_expire_test = isset($_GET['refresh_token']) ? true : false;
+					if(isset($_GET['code'])){
+						$_expire_test = true;
+					}
 					$_check_expires_in = !empty($WPMLSync['expires_in']) ? $WPMLSync['expires_in'] : time();
-					if( $_check_expires_in < time() || $_expire_test ) {	
+					if( ($_check_expires_in < time() && !empty($WPMLSync['auto_token']) ) || $_expire_test) {	
 						try {
 							// Make the refresh proccess 
  
-							$_global_meli = new Meli($WPMLSync['appId'], $WPMLSync['secretKey'], $WPMLSync['access_token'], $WPMLSync['refresh_token']);
+							$refresh_MELI = new Meli($WPMLSync['appId'], $WPMLSync['secretKey'], $WPMLSync['access_token'], $WPMLSync['refresh_token']);
 
-							$refresh = $_global_meli->refreshAccessToken(); 
-							// Now we create the sessions with the new parameters
-							$_access_token = $refresh['body']->access_token;
-							$_expires_in = time() + $refresh['body']->expires_in;
-							$_refresh_token = $refresh['body']->refresh_token; 
-							$_seller_id = wp_mercadolibre_sync_get_seller_id($_global_meli, $refresh['body']->access_token);
+							$refresh = $refresh_MELI->refreshAccessToken();  
+							$_seller_id = wp_mercadolibre_sync_get_seller_id($refresh_MELI, $refresh['body']->access_token);
 
 							wp_mercadolibre_sync_update_settings(array(
 								'access_token' => $refresh['body']->access_token,
@@ -220,36 +251,38 @@ class Wp_Mercadolibre_Sync_Admin {
 								'seller_id' => $_seller_id
 							));
 
-							$global_meli_code = 5;
+							$api_status = 5;
+							if(isset($_GET['code'])){
+								$api_status = 8;
+							}
+
+							$refresh_public_count = (null !== get_option('wp_mercadolibre_sync_refresh_admin_count')) ? get_option('wp_mercadolibre_sync_refresh_admin_count') : 0;
+							update_option('wp_mercadolibre_sync_refresh_admin_count', ($refresh_public_count + 1));
 
 
 						} catch (Exception $e) {
 						  	$Exception .= $e->getMessage(). "\n";
 						}
 					}else{ 
-						$global_meli_code = 6;
+						$api_status = 6;
 					}
-				} 
-
-				//$_seller_id = wp_mercadolibre_sync_get_seller_id($global_meli, $WPMLSync['access_token']);
-				$WPMLSync = wp_mercadolibre_sync_settings(); 
-				$global_meli_tokens = array( 
-					'access_token' => $_access_token ? $_access_token : $WPMLSync['access_token'],
-					'expires_in' => $_expires_in ? $_expires_in : $WPMLSync['expires_in'],
-					'refresh_token' => $_refresh_token ? $_refresh_token : $WPMLSync['refresh_token'],
-					'seller_id' => $_seller_id ? $_seller_id : $WPMLSync['seller_id'], 
-				);
+				}  
 
 			} else {
-				$global_meli_code = 7;
-				// echo '<a href="' . $global_meli->getAuthUrl($redirectURI, Meli::$AUTH_URL[$siteId]) . '">Login using MercadoLibre oAuth 2.0</a>';
+				$api_status = 7; 
 			}
 
-			update_option('wp_mercadolibre_sync_status',$global_meli_code);
-			// file_put_contents(WP_CONTENT_DIR . '/wpmlsync-debug.txt', "".date('Y-m-d H:i:s', time())." debug: ".$global_meli_code." update_option \n", FILE_APPEND);
+			// update_option('wp_mercadolibre_sync_status',$api_status);
+			
+			// file_put_contents(WP_CONTENT_DIR . '/wpmlsync-debug.txt', "".date('Y-m-d H:i:s', time())." debug: ".$api_status." update_option \n", FILE_APPEND);
 		}
-
+		update_option('wp_mercadolibre_sync_status',$api_status);
 		
+	}
+
+	public function admin_register_settings() {  
+
+		// Register settings
 
 		register_setting( 'wp_mercadolibre_sync_api', 'wp_mercadolibre_sync_settings', array($this, '_validate' ) );
 
@@ -294,21 +327,15 @@ class Wp_Mercadolibre_Sync_Admin {
 			);
 		} 
 
-		// Set seller_id field
+		// Set seller_id field TODO pass it to private fields array, has no utility to leave it alone
 
 		add_settings_field( 
 			'wp_mercadolibre_sync_seller_id',
 			'seller_id',
-			function() { 
-				 global $global_meli_tokens; 
+			function() {   
 				 $field = 'seller_id';
 				 $options = get_option( 'wp_mercadolibre_sync_settings' );
-					$value = isset($options['wp_mercadolibre_sync_'.$field]) ? $options['wp_mercadolibre_sync_'.$field] : '';
-					// #SESSION_NOT
-					//$value = isset($global_meli_tokens[$field]) ? $global_meli_tokens[$field] : $value;
-					if($global_meli_code==4){
-						//$value = $global_meli_tokens['seller_id'];
-					}
+					$value = isset($options['wp_mercadolibre_sync_'.$field]) ? $options['wp_mercadolibre_sync_'.$field] : ''; 
 					?>
 					<input readonly type='text' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]' value='<?php echo $value; ?>' class='wpmlsync__control'>
 					<?php  
@@ -324,12 +351,9 @@ class Wp_Mercadolibre_Sync_Admin {
 			add_settings_field( 
 				'wp_mercadolibre_sync_'.$field, 
 				$field, 
-				function() use ( $field ) {
-					global $global_meli_tokens;
+				function() use ( $field ) { 
 					$options = get_option( 'wp_mercadolibre_sync_settings' );
-					$value = isset($options['wp_mercadolibre_sync_'.$field]) ? $options['wp_mercadolibre_sync_'.$field] : '';
-					// #SESSION_NOT
-					//$value = isset($global_meli_tokens[$field]) ? $global_meli_tokens[$field] : $value;
+					$value = isset($options['wp_mercadolibre_sync_'.$field]) ? $options['wp_mercadolibre_sync_'.$field] : ''; 
 					?>
 					<input readonly type='text' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]' value='<?php echo $value; ?>' class='wpmlsync__control'>
 					<?php  
@@ -345,10 +369,15 @@ class Wp_Mercadolibre_Sync_Admin {
 			function() {  
 				 $field = 'auto_token';
 				 $options = get_option( 'wp_mercadolibre_sync_settings' );
-					$checked = isset($options['wp_mercadolibre_sync_'.$field]) ? 'checked' : ''; 
+					
+					if(empty($options)){
+						$checked = 'checked';
+					}else{
+						$checked = isset($options['wp_mercadolibre_sync_'.$field]) ? 'checked' : ''; 
+					}
 					?> 
 					<label class="wpmlsync__label_control"><input type='checkbox' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]' <?php echo $checked; ?> class='wpmlsync__checkbox'><span class="">Enable Auto Token? </span></label>
-					<p>Tokens exprie each 5 hours, enable this option to run a cron job and refresh it automaticly.</p>
+					<p>Tokens exprie each 6 hours, enable this option to refresh it automaticly when needed.</p>
 					<?php  
 			},
 			$this->plugin_name.'-advanced',

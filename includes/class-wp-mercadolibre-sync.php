@@ -124,7 +124,10 @@ class Wp_Mercadolibre_Sync {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-mercadolibre-sync-public.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'Meli/meli.php';
+		$use_debug_meli = true;
+		$meli_path = $use_debug_meli ? 'Meli/meli-debug.php' : 'Meli/meli.php'; 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . $meli_path;
+		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-mercadolibre-sync-meli.php'; 
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/wp-mercadolibre-sync-shortcodes.php';
 
@@ -176,8 +179,10 @@ class Wp_Mercadolibre_Sync {
 
 		// $this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup', 99 );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-		if ( is_blog_admin() ) {
-			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_settings_init', 1 );
+		if ( is_admin() && ( ! wp_doing_ajax() ) ) {
+			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init_settings', 1 );
+			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_register_settings', 2 );
+			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
 		}
 		$this->loader->add_action( 'admin_body_class', $plugin_admin, 'admin_body_class' );
 	}
@@ -195,7 +200,9 @@ class Wp_Mercadolibre_Sync {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		if ( !is_admin() && ( ! wp_doing_ajax() ) ) {
+			$this->loader->add_action( 'init', $plugin_public, 'init_settings', 1 );
+		}
 		// USED???
 		$this->loader->add_filter( 'wp_mercadolibre_sync/template/get_item', $plugin_public, 'template_get_item' ); 
 

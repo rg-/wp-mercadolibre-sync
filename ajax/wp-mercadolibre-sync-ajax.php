@@ -52,7 +52,29 @@ class Wp_Mercadolibre_Sync_Ajax {
 	public function Wp_Mercadolibre_Sync_Ajax_Get(){ 
 		global $wpdb; // access to WP database 
 		$whatever = intval( $_POST['whatever'] );
-		echo time(); 
+		$api_status = wp_mercadolibre_sync_get_api_status();
+		$wp_mercadolibre_sync_settings = wp_mercadolibre_sync_settings();
+		// extract varis like $appId, $secretKey, $access_token, $expires_in, $refresh_token
+		extract($wp_mercadolibre_sync_settings);  
+		$allowed = true;
+		if( $allowed ){
+
+			$meli = new Meli($appId, $secretKey);
+			$params = array(
+					// 'limit' => 1, // limit items on query
+					'status' => 'active', // pending, not_yet_active, programmed, active, paused, closed
+			  	'access_token' => $access_token
+			  );
+			$url = '/users/'.$seller_id.'/items/search/';  
+			$items = $meli->get($url, $params);
+			$items_ids = $items['body']->results;
+			// $json_items = json_encode($items);
+		?>
+		<pre class="wpmlsync_ul">
+      <?php print_r($items_ids); ?>
+    </pre>
+		<?php
+		}
 		// allways die at last !
 		wp_die();
 	}
@@ -70,8 +92,20 @@ class Wp_Mercadolibre_Sync_Ajax {
 }
 
 add_shortcode( 'ml_get_ajax', array( 'Wp_Mercadolibre_Sync_Ajax', 'Wp_Mercadolibre_Sync_Ajax_Shortcode' ) );
+
 add_action( 'wp_ajax_nopriv_'.'wpmlsync', array('Wp_Mercadolibre_Sync_Ajax', 'Wp_Mercadolibre_Sync_Ajax_Get') );
 add_action( 'wp_ajax_'.'wpmlsync', array('Wp_Mercadolibre_Sync_Ajax', 'Wp_Mercadolibre_Sync_Ajax_Get') );
-// ej:  .../admin-ajax.php?action=wpmlsync 
+
+/*
+
+	Ej:  .../admin-ajax.php?action=wpmlsync 
+
+	Ej: para levantar el resultado del ajax directo en el php
+
+	$response = wp_remote_get( '../wp-admin/admin-ajax.php?action=wpmlsync', '' );
+	$response = wp_remote_retrieve_body( $response );
+	print_r($response);
+
+*/
 
 add_action( 'wp_enqueue_scripts', array('Wp_Mercadolibre_Sync_Ajax', 'Wp_Mercadolibre_Sync_Ajax_Script')  ); 

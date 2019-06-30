@@ -1,5 +1,5 @@
 <?php 
-$n = new Wp_Mercadolibre_Sync(); 
+// $n = new Wp_Mercadolibre_Sync(); 
 //echo $n->get_plugin_name(); 
 
 $meli = new Meli($appId, $secretKey);
@@ -49,9 +49,8 @@ if( $body_message === '' ){
 			$id = $body->id;
 			$title = $body->title;
 			$permalink = $body->permalink;  
-		  $thumbnail = $body->thumbnail;  
-
-		  $descriptions = $body->thumbnail;  
+		  $thumbnail = $body->thumbnail; 
+		  $descriptions = $body->descriptions;  
 		  /*
 			ej:
 			[descriptions] => Array
