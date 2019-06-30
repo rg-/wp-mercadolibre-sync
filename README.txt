@@ -1,20 +1,18 @@
-=== Plugin Name ===
+=== WP Mercado Libre SyncWP Mercado Libre Sync ===
 Contributors: (arriba)
 Donate link: https://github.com/rg-
-Tags: comments, spam
+Tags: mercado libre api, oauth, meli, rest api, sync
 Requires at least: 4.8
 Tested up to: 5.2.2
 Stable tag 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WP Mercado Libre Sync will connect your website with the Mercado Libre API in 2 steps.
+Connect your website with the Mercado Libre API.
 
 == Description ==
 
-This plugin will make possible to interact with your application on Mercado Libre using their API. Once this is done, plugin will ensure to keep conected allways, refreshing tokens when necesary.
-
-Since from there all the rest is just how to use the API, more modules will be opened to add into the plugin´s functionality. By default plugin has the "Shortcodes" module included, that´s is a large variety of shortcodes to output into the front-end, like your products by category, or by date, or by price, or just a single product by ID, user information, comments, so on. All those things will be the ones used on your Mercado Libre publications. The basic module will do just basic things, there will be other modules for real syncronization between your publications on ML, and your post on WP.
+This plugin will make possible to interact with your application on Mercado Libre and your Wordpress site.
  
 
 == Installation ==

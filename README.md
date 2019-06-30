@@ -1,11 +1,10 @@
 # Wordpress Mercado Libre Sync
 
-Version 1.0.0
 
 ```
-Add Mercado Libre API functionality to your site
+Connect your website with the Mercado Libre API.
 ```
 
 ## Description
 
-Soon....
+This plugin will make possible to interact with your application on Mercado Libre and your Wordpress site.
