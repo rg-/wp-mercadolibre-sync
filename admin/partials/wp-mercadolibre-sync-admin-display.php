@@ -32,9 +32,6 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
 }
 
 ?>
-<h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?></h1>
-<div class="clear"></div>
-<br>
 
 <div class="wpmlsync__postbox-container">
   
@@ -181,7 +178,7 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
 <div class="clear"></div>
 <!-- #post-body-content end -->
 
-<!-- -->
+<!-- The settings fields form -->
 <form action='options.php' method='post'>
 
   <?php
@@ -191,37 +188,28 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
   <div class="wpmlsync__postbox-container">
     <div class="wpmlsync__postbox-inner">
       <div class="wpmlsync__card">
-        <h2 class="wpmlsync__postbox-title"><?php echo __( 'API Settings', 'wp-mercadolibre-sync' ); ?></h2>
-      </div>
-      <div class="wpmlsync__card">
-      <?php
-      do_settings_sections( 'wp-mercadolibre-sync' );
-      ?>
+        <?php
+        do_settings_sections( 'wp-mercadolibre-sync' );
+        ?>
       </div>
     </div>
   </div>
 
   <div class="wpmlsync__postbox-container">
     <div class="wpmlsync__postbox-inner">
-      <div class="wpmlsync__card">
-        <h2 class="wpmlsync__postbox-title"><?php echo __( 'Advanced Settings', 'wp-mercadolibre-sync' ); ?></h2>
-      </div>
-      <div class="wpmlsync__card">
-      <?php
-      do_settings_sections( 'wp-mercadolibre-sync-advanced' ); 
-      ?>
-      </div>
-    </div>
-  </div>
-
-  <div class="wpmlsync__postbox-container">
-    <div class="wpmlsync__postbox-inner">
-      <div class="wpmlsync__card">
-        <h2 class="wpmlsync__postbox-title"><?php echo __( 'oAuth Data', 'wp-mercadolibre-sync' ); ?></h2>
-      </div>
       <div class="wpmlsync__card">
         <?php
-        do_settings_sections( 'wp-mercadolibre-sync-private' ); 
+          do_settings_sections( 'wp-mercadolibre-sync-private' ); 
+          ?>
+      </div>
+    </div>
+  </div>
+
+  <div class="wpmlsync__postbox-container">
+    <div class="wpmlsync__postbox-inner">
+      <div class="wpmlsync__card">
+        <?php
+        do_settings_sections( 'wp-mercadolibre-sync-advanced' ); 
         ?>
       </div>
     </div>

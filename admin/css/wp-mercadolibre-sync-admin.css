@@ -33,12 +33,19 @@
 .wpmlsync__postbox-inner {
   padding: 1em;
   background-color: #fff;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04); }
+  .wpmlsync__postbox-inner .about-description {
+    font-size: 16px;
+    margin: 0;
+    color: #72777c; }
 
 .wpmlsync__postbox-title {
   font-size: 20px !important;
   padding: 0 !important;
-  position: relative; }
+  position: relative;
+  margin-bottom: 1em !important; }
 
 .wpmlsync__postbox-subtitle {
   font-size: 16px !important;
@@ -120,6 +127,8 @@
     background-color: var(--primary); }
   .wpmlsync__badge.success {
     background-color: var(--success); }
+  .wpmlsync__badge.danger {
+    background-color: var(--danger); }
 
 .status-badge {
   position: absolute;

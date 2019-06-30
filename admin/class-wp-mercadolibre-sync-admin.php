@@ -433,6 +433,14 @@ class Wp_Mercadolibre_Sync_Admin {
 		<div class="wrap wpmlsync__wrap">
 			<div id="poststuff">
 			  <div id="post-body" class="metabox-holder columns-1">
+
+			  	<h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?></h1>
+					<div class="clear"></div>
+					<br>
+
+			  	<?php
+					// require_once plugin_dir_path( __FILE__ ) . 'partials/wp-mercadolibre-sync-admin-welcome.php'; 
+					?>
 					<?php
 					require_once plugin_dir_path( __FILE__ ) . 'partials/wp-mercadolibre-sync-admin-display.php'; 
 					?>
@@ -443,21 +451,28 @@ class Wp_Mercadolibre_Sync_Admin {
 	}
 	
 	public function wp_mercadolibre_sync_settings_section_advanced_callback(  ) { 
-		// echo __( 'This section description', 'wp-mercadolibre-sync' ); 
-		 
- 
+		// echo __( 'This section description', 'wp-mercadolibre-sync' );  
+		?>
+		<h2 class="wpmlsync__postbox-title"><?php echo __( 'Advanced Settings', 'wp-mercadolibre-sync' ); ?></h2>
+		<p class='about-description'>Recomendamos utilizar estas opciones solo para desarrollo. La opción de activar Auto Token debería estar siempre activa en sitios en producción.</p>
+		<?php
 	}
 
 
-	public function wp_mercadolibre_sync_settings_section_private_callback(  ) { 
-		// echo __( 'This section description', 'wp-mercadolibre-sync' ); 
-			echo "<p>Estos datos son privados, pueden usarse para consultar la API por consola o resultado de curl.</p>";
+	public function wp_mercadolibre_sync_settings_section_private_callback(  ) {  
+		?>
+		<h2 class="wpmlsync__postbox-title"><?php echo __( 'oAuth Data', 'wp-mercadolibre-sync' ); ?></h2>
+		<p class='about-description'>Estos datos son privados, pueden usarse para interactura con la API. Ver la documentación de Mercado Libre API para más información.</p>
+		<br><span class='wpmlsync__badge'><b>IMPORTANTE</b>: Núnca comparta estos datos.</span>
+		<?php 
  
 	}
 
-	public function wp_mercadolibre_sync_settings_section_callback(  ) { 
-		// echo __( 'This section description', 'wp-mercadolibre-sync' ); 
-			echo "<p>Los datos de appId, secretKey y redirectURI, deben ser los mismos previamente seteados en tu <a href='https://developers.mercadolibre.com/apps' target='_blank' title='developers.mercadolibre.com/apps'>Aplicación</a>. </p>";
+	public function wp_mercadolibre_sync_settings_section_callback(  ) {  
+		?>
+		<h2 class="wpmlsync__postbox-title"><?php echo __( 'API Settings', 'wp-mercadolibre-sync' ); ?></h2>
+		<p class='about-description'>Los datos de appId, secretKey y redirectURI, deben ser los mismos previamente seteados en tu <b>Aplicación</b>. El valor de <b>siteId</b> se refiere al idioma del sitio, por ej. MLB corresponde a Brasil, MLA a Argentina, etc.</p>
+		<?php 
  
 	}
 
