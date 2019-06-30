@@ -127,7 +127,7 @@ class Wp_Mercadolibre_Sync_Public {
 						'expires_in' => $refresh['body']->expires_in,
 						'refresh_token' => $refresh['body']->refresh_token,
 						'seller_id' => $_seller_id
-					));
+					), true);
  
 					update_option('wp_mercadolibre_sync_status', 5);
 

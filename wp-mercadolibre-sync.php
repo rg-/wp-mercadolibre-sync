@@ -33,6 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.1' );
 
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wp-mercadolibre-sync-activator.php

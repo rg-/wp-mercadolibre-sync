@@ -271,13 +271,11 @@ class Wp_Mercadolibre_Sync_Admin {
 			} else {
 				$api_status = 7; 
 			}
-
-			// update_option('wp_mercadolibre_sync_status',$api_status);
-			
-			// file_put_contents(WP_CONTENT_DIR . '/wpmlsync-debug.txt', "".date('Y-m-d H:i:s', time())." debug: ".$api_status." update_option \n", FILE_APPEND);
+ 
 		}
+
 		update_option('wp_mercadolibre_sync_status',$api_status);
-		
+		wp_mercadolibre_sync_debug('update_option::wp_mercadolibre_sync_status status: '.$api_status.'');
 	}
 
 	public function admin_register_settings() {  
@@ -363,13 +361,17 @@ class Wp_Mercadolibre_Sync_Admin {
 			);
 		} 
 
+		/**
+		 *
+		 * 'auto_token'
+		 * 
+		 */
 		add_settings_field( 
 			'wp_mercadolibre_sync_auto_token',
 			'auto_token',
 			function() {  
-				 $field = 'auto_token';
-				 $options = get_option( 'wp_mercadolibre_sync_settings' );
-					
+					$field = 'auto_token';
+					$options = get_option( 'wp_mercadolibre_sync_settings' ); 
 					if(empty($options)){
 						$checked = 'checked';
 					}else{
@@ -383,9 +385,29 @@ class Wp_Mercadolibre_Sync_Admin {
 			$this->plugin_name.'-advanced',
 				'wp_mercadolibre_sync_settings_section_advanced' 
 		); 
+		add_settings_field( 
+			'wp_mercadolibre_sync_debug',
+			'debug',
+			function() {  
+					$field = 'debug';
+					$options = get_option( 'wp_mercadolibre_sync_settings' ); 
+					if(empty($options)){
+						$checked = 'checked';
+					}else{
+						$checked = isset($options['wp_mercadolibre_sync_'.$field]) ? 'checked' : ''; 
+					}
+					?> 
+					<label class="wpmlsync__label_control"><input type='checkbox' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]' <?php echo $checked; ?> class='wpmlsync__checkbox'><span class="">Enable Debug? </span></label>
+					<p>A file will be created/updated at: wp-content/wp-mercadolibre-sync-debug.txt with debug information.</p>
+					<?php  
+			},
+			$this->plugin_name.'-advanced',
+				'wp_mercadolibre_sync_settings_section_advanced' 
+		); 
 		
 
 	}
+	// admin_register_settings() END 
 
 	public function _validate($input){
 		$validated = $input;

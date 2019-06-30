@@ -66,14 +66,17 @@ function wp_mercadolibre_sync_meli_code_array(){
 		} 
 	}
 
-function wp_mercadolibre_sync_update_settings($args=array()){
+function wp_mercadolibre_sync_update_settings($args=array(), $is_public=false){
 	if(!empty($args)){
 			$_temp_options = get_option( 'wp_mercadolibre_sync_settings' );
 			$_temp_options['wp_mercadolibre_sync_access_token'] = $args['access_token'];
 			$_temp_options['wp_mercadolibre_sync_expires_in'] = time() + $args['expires_in'];
+			//$_temp_options['wp_mercadolibre_sync_expires_in'] = time() + 10;
 			$_temp_options['wp_mercadolibre_sync_refresh_token'] = $args['refresh_token'];
 			$_temp_options['wp_mercadolibre_sync_seller_id'] = $args['seller_id'];
-			update_option( 'wp_mercadolibre_sync_settings', $_temp_options );
+			update_option( 'wp_mercadolibre_sync_settings', $_temp_options ); 
+
+			wp_mercadolibre_sync_debug('update_option::wp_mercadolibre_sync_settings '. ($is_public ? 'public' : 'admin') .'');
 	}
 }
 
@@ -97,10 +100,13 @@ function wp_mercadolibre_sync_get_api_debug($debug){
 	$debug = apply_filters('wpmlsync/api/debug', $debug);
 	return $debug;
 }
-function wp_mercadolibre_sync_debug(){
-	$debug = wp_mercadolibre_sync_get_api_status($debug);
-	$status = wp_mercadolibre_sync_get_api_status();
-	file_put_contents(WP_CONTENT_DIR . '/wpmlsync-debug.txt', "[status: ".$status."] ".date('Y-m-d H:i:s', time())." msg: ".$debug."\n", FILE_APPEND);
+function wp_mercadolibre_sync_debug($debug){
+	$enable = get_option('wp_mercadolibre_sync_settings', 0); 
+	if(!empty($enable['wp_mercadolibre_sync_debug'])){
+		// $debug = wp_mercadolibre_sync_get_api_status($debug);
+		$status = wp_mercadolibre_sync_get_api_status();
+		file_put_contents(WP_CONTENT_DIR . '/wp-mercadolibre-sync-debug.txt', "[status: ".$status."] ".date('Y-m-d H:i:s', time())." msg: ".$debug."\n", FILE_APPEND);
+	} 
 }
  
 
