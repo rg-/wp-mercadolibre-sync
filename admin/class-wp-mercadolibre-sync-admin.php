@@ -8,18 +8,9 @@
  *
  * @package    Wp_Mercadolibre_Sync
  * @subpackage Wp_Mercadolibre_Sync/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Wp_Mercadolibre_Sync
- * @subpackage Wp_Mercadolibre_Sync/admin
  * @author     Roberto García <roberto.jg@gmail.com>
  */
+
 class Wp_Mercadolibre_Sync_Admin {
 
 	/**
@@ -60,19 +51,7 @@ class Wp_Mercadolibre_Sync_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Mercadolibre_Sync_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Mercadolibre_Sync_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+	public function enqueue_styles() { 
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-mercadolibre-sync-admin.css', array(), $this->version, 'all' );
 
@@ -83,19 +62,7 @@ class Wp_Mercadolibre_Sync_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Mercadolibre_Sync_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Mercadolibre_Sync_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+	public function enqueue_scripts() { 
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-mercadolibre-sync-admin.js', array( 'jquery' ), $this->version, false );
 
@@ -147,11 +114,34 @@ class Wp_Mercadolibre_Sync_Admin {
 
 	}
 
-	/*
+	
+	/**
+	 * Remove query args on urls.
+	 *
+	 * @since    1.0.1
+	 */
+	public function admin_removable_query_args($args){
+		/**
+		 * An array list of query parameters removed by WordPress is returned by wp_removable_query_args()
+		 * It includes a removable_query_args filter. Thus, we can add our plugin query parameters. 
+		*/
+		$screen = get_current_screen();
+		if(isset($screen) && $screen->parent_base == $this->plugin_name){
+			$args[] = 'refresh_token';
+			$args[] = 'code';
+			$args[] = 'access_token';
+			$args[] = 'test_user';
+			$args[] = 'post_test';
+		}
+		
+		return $args;
+	}
 
-	TODO, add description, see also init_settings() on public hoocks, it´s quite same thing
-
-	*/
+	/**
+	 * Set the admin noticies depending on, mosty, the API status reported.
+	 *
+	 * @since    1.0.0
+	 */
 	public function admin_notices(){
 		$WPMLSync = wp_mercadolibre_sync_settings(); 
 		$api_status = wp_mercadolibre_sync_get_api_status();
@@ -177,7 +167,7 @@ class Wp_Mercadolibre_Sync_Admin {
 			if( $api_status == 4 ){
 				?>
 		    <div class="notice notice-success is-dismissible">
-		        <p><?php _e( 'Perfecto!! Plugin configurado correctamente.', 'wp-mercadolibre-sync' ); ?></p>
+		        <p><?php _e( 'Perfect!! Plugin configured correctly.', 'wp-mercadolibre-sync' ); ?></p>
 		    </div>
 		    <?php
 			}
@@ -192,6 +182,12 @@ class Wp_Mercadolibre_Sync_Admin {
 		}
 		
 	}
+
+	/**
+	 * Initialize the admin settings
+	 *
+	 * @since    1.0.0
+	 */
 	public function admin_init_settings() {
 
 		$api_status = 0; 
@@ -278,33 +274,37 @@ class Wp_Mercadolibre_Sync_Admin {
 		wp_mercadolibre_sync_debug('update_option::wp_mercadolibre_sync_status status: '.$api_status.'');
 	}
 
+	/**
+	 * Register settings
+	 *
+	 * @since    1.0.0
+	 */
 	public function admin_register_settings() {  
 
-		// Register settings
+		// Settings & Sections
 
 		register_setting( 'wp_mercadolibre_sync_api', 'wp_mercadolibre_sync_settings', array($this, '_validate' ) );
 
 		add_settings_section(
 			'wp_mercadolibre_sync_settings_section', 
-			__( '', 'wp-mercadolibre-sync' ), 
+			'',  // Could be _x( '', 'wp-mercadolibre-sync' )
 			array( $this, 'wp_mercadolibre_sync_settings_section_callback' ) , 
 			$this->plugin_name
 		); 
 		add_settings_section(
 			'wp_mercadolibre_sync_settings_section_advanced', 
-			__( '', 'wp-mercadolibre-sync' ), 
+			'', 
 			array( $this, 'wp_mercadolibre_sync_settings_section_advanced_callback' ) , 
 			$this->plugin_name.'-advanced'
 		); 
-		
-
 		add_settings_section(
 			'wp_mercadolibre_sync_settings_section_private', 
-			__( '', 'wp-mercadolibre-sync' ), 
+			'',
 			array( $this, 'wp_mercadolibre_sync_settings_section_private_callback' ) , 
 			$this->plugin_name.'-private'
 		); 
- 
+ 	
+ 		// Settings & Sections END
 
 		// Set user fields
 
@@ -409,11 +409,22 @@ class Wp_Mercadolibre_Sync_Admin {
 	}
 	// admin_register_settings() END 
 
+	/**
+	 * Simple validate for input texts.
+	 *
+	 * @since    1.0.0
+	 */
 	public function _validate($input){
 		$validated = $input;
     return $validated;
 	} 
 
+
+	/**
+	 * Callback for admin page
+	 *
+	 * @since    1.0.0
+	 */
 	public function wp_mercadolibre_sync_debug_page(  ) {  
 			?>
 		<div class="wrap wpmlsync__wrap">
@@ -428,6 +439,11 @@ class Wp_Mercadolibre_Sync_Admin {
 		<?php
 	}
 
+	/**
+	 * Callback for admin page
+	 *
+	 * @since    1.0.0
+	 */
 	public function wp_mercadolibre_sync_options_page(  ) { 
 		?>
 		<div class="wrap wpmlsync__wrap">
@@ -437,8 +453,8 @@ class Wp_Mercadolibre_Sync_Admin {
 			  	<h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?></h1>
 					<div class="clear"></div>
 					<br>
-
 			  	<?php
+			  	// tests
 					// require_once plugin_dir_path( __FILE__ ) . 'partials/wp-mercadolibre-sync-admin-welcome.php'; 
 					?>
 					<?php
@@ -450,37 +466,62 @@ class Wp_Mercadolibre_Sync_Admin {
 		<?php
 	}
 	
+	/**
+	 * Callback for admin page
+	 *
+	 * @since    1.0.0
+	 */
 	public function wp_mercadolibre_sync_settings_section_advanced_callback(  ) { 
 		// echo __( 'This section description', 'wp-mercadolibre-sync' );  
 		?>
 		<h2 class="wpmlsync__postbox-title"><?php echo __( 'Advanced Settings', 'wp-mercadolibre-sync' ); ?></h2>
-		<p class='about-description'>Recomendamos utilizar estas opciones solo para desarrollo. La opción de activar Auto Token debería estar siempre activa en sitios en producción.</p>
+		<p class='about-description'><?php echo __( 'We recommend using these options only for development. The option to activate Auto Token should always be active on production sites.', 'wp-mercadolibre-sync' ); ?></p>
 		<?php
 	}
 
 
+	/**
+	 * Callback for settings section
+	 *
+	 * @since    1.0.0
+	 */
 	public function wp_mercadolibre_sync_settings_section_private_callback(  ) {  
 		?>
 		<h2 class="wpmlsync__postbox-title"><?php echo __( 'oAuth Data', 'wp-mercadolibre-sync' ); ?></h2>
-		<p class='about-description'>Estos datos son privados, pueden usarse para interactura con la API. Ver la documentación de Mercado Libre API para más información.</p>
-		<br><span class='wpmlsync__badge'><b>IMPORTANTE</b>: Núnca comparta estos datos.</span>
+		<p class='about-description'><?php echo __( 'These data are private, can be used to interact with the API. See the Mercado Libre API documentation for more information.', 'wp-mercadolibre-sync' ); ?></p>
+		<br><span class='wpmlsync__badge'><span class="dashicons dashicons-warning"></span> <?php echo __( 'Never share this data.', 'wp-mercadolibre-sync' ); ?></span>
 		<?php 
  
 	}
 
+	/**
+	 * Callback for settings section
+	 *
+	 * @since    1.0.0
+	 */
 	public function wp_mercadolibre_sync_settings_section_callback(  ) {  
 		?>
 		<h2 class="wpmlsync__postbox-title"><?php echo __( 'API Settings', 'wp-mercadolibre-sync' ); ?></h2>
-		<p class='about-description'>Los datos de appId, secretKey y redirectURI, deben ser los mismos previamente seteados en tu <b>Aplicación</b>. El valor de <b>siteId</b> se refiere al idioma del sitio, por ej. MLB corresponde a Brasil, MLA a Argentina, etc.</p>
+		<p class='about-description'><?php echo __( 'These data must be exactly the same as those set in the Application created in Mercado Libre previously. ', 'wp-mercadolibre-sync' ); ?></p>
+		<p class='about-description'>"siteId" <?php echo __('refers to the country of the user used for the application.', 'wp-mercadolibre-sync');?></p>
 		<?php 
  
 	}
 
+	/**
+	 * Get an array with all the public settings fields used. Required, user editable
+	 *
+	 * @since    1.0.0
+	 */
 	public function _get_setting_fields(){ 
 		$fields = array('appId','secretKey','redirectURI','siteId'); 
 		return $fields;  
 	}
-
+	/**
+	 * Get an array with all the private settings fields used. Required, not editable by user.
+	 *
+	 * @since    1.0.0
+	 */
 	public function _get_private_fields(){ 
 		$fields = array('access_token','expires_in','refresh_token'); 
 		return $fields;  

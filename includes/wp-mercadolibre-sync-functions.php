@@ -3,7 +3,7 @@
 function wp_mercadolibre_sync_meli_code_array(){
 	$meli_code_array = array(
 			0 => array(
-				'desc' => 'Estás a solo 2 pasos para dejar funcionando el sistema correctamente. <br><br>Paso 1: Completa los datos de API Settings, <b>appId</b>, <b>secretKey</b> y <b>redirectURI</b> que obtendrás creando una aplicación en tu cuenta de Mercado Libre.',
+				'desc' => _x('No data set and / or saved yet.','wp-mercadolibre-sync'),
 				'html' => '',
 			),
 			1 => array(
@@ -19,23 +19,23 @@ function wp_mercadolibre_sync_meli_code_array(){
 				'html' => ''
 			),
 			4 => array(
-				'desc' => 'Muy bien, se ha autorizado la API. Los datos han sido guardados.',
+				'desc' => _x('Okay, the API has been authorized. The data has been saved.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 			5 => array(
-				'desc' => 'Se han refrescado los tokens y tiempo de expiración. Los datos han sido guardados.',
+				'desc' => _x('The Token and expiration time have been refreshed. The data has been saved.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 			6 => array(
-				'desc' => 'Excelente, tu API está vinculada correctamente. ',
+				'desc' => _x('Excellent, your API is linked correctly.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 			7 => array(
-				'desc' => 'Debes autentificar tu aplicación. Apreta el botón "Authorize your APP", serás redireccionado para logearte con tu usuario, en el cual has creado ademas la aplicacion a vincular.<br><br>Una vez logeado serás redireccionado nuevamente a esta pagina y los datos se guardarán automaticamente. Por favor no cierres las sesión mientras esto sucede.',
+				'desc' => _x('You must authenticate your application to continue.','wp-mercadolibre-sync'),
 				'html' => ''
 			), 
 			8 => array(
-				'desc' => 'Se ha autorizado tu app con un code nuevo. Tokens y tiempo de expiración se han refrescado.',
+				'desc' => _x('Your app has been authorized with a new code. Tokens and expiration time have been refreshed.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 		);

@@ -20,9 +20,7 @@ $body_message = isset($meli_result['body']->message) ? $meli_result['body']->mes
 if( $body_message == 'expired_token' || $body_message == 'invalid_token' ){ 
 
 	echo "<p>[".$body_message."] ".__('error, please configure API settings.','wp-mercadolibre-sync')."</p>"; 
-	
-
-
+	 
 }
 
 

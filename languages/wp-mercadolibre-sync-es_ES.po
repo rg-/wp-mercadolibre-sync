@@ -1,0 +1,1742 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-mercadolibre-sync\n"
+"POT-Creation-Date: 2019-06-30 22:34-0300\n"
+"PO-Revision-Date: 2019-06-30 22:34-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;_x;esc_html__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:97
+#: ../admin/class-wp-mercadolibre-sync-admin.php:98
+msgid "Mercadolibre Sync"
+msgstr "Mercadolibre Sync"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:107
+#: ../admin/class-wp-mercadolibre-sync-admin.php:108
+#: ../admin/partials/wp-mercadolibre-sync-admin-debug.php:13
+msgid "Debug"
+msgstr "Debug"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:156
+msgid "Token refreshed!!"
+msgstr "Token refrescado !!"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:163
+msgid "Re-autorized API. Token refreshed!!"
+msgstr "API autorizada de nuevo. Token refrescado !!"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:170
+msgid "Perfect!! Plugin configured correctly."
+msgstr "¡¡Perfecto!! Plugin configurado correctamente."
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:177
+msgid "Plugin needs more settings."
+msgstr "El plugin necesita más configuraciones."
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:453
+#: ../admin/partials/wp-mercadolibre-sync-admin-debug.php:13
+#: ../admin/partials/_wp-mercadolibre-sync-admin-display.php:20
+msgid "WP Mercadolibre Sync"
+msgstr "WP Mercadolibre Sync"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:477
+msgid "Advanced Settings"
+msgstr "Ajustes avanzados"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:478
+msgid ""
+"We recommend using these options only for development. The option to "
+"activate Auto Token should always be active on production sites."
+msgstr ""
+"Recomendamos usar estas opciones solo para el desarrollo. La opción para "
+"activar el token automático siempre debe estar activa en los sitios de "
+"producción."
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:490
+msgid "oAuth Data"
+msgstr "Datos oAuth"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:491
+msgid ""
+"These data are private, can be used to interact with the API. See the "
+"Mercado Libre API documentation for more information."
+msgstr ""
+"Estos datos son privados, se pueden utilizar para interactuar con la API. "
+"Consulte la documentación de la API de Mercado Libre para obtener más "
+"información."
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:492
+msgid "Never share this data."
+msgstr "Nunca comparta estos datos."
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:504
+msgid "API Settings"
+msgstr "Configuraciones API"
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:505
+msgid ""
+"These data must be exactly the same as those set in the Application created "
+"in Mercado Libre previously. "
+msgstr ""
+"Estos datos deben ser exactamente los mismos que los establecidos en la "
+"Aplicación creada anteriormente en Mercado Libre."
+
+#: ../admin/class-wp-mercadolibre-sync-admin.php:506
+msgid "refers to the country of the user used for the application."
+msgstr "se refiere al país del usuario utilizado para la aplicación."
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:44
+msgid "System status"
+msgstr "Estado del sistema"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:49
+msgid "Connected API"
+msgstr "API conectada"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:63
+msgid "Token life"
+msgstr "Vida del Token"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:65
+msgid "Expires in (UTC)"
+msgstr "Expira en (UTC)"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:71
+msgid "Authenticate the application"
+msgstr "Autenticar la aplicación"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:75
+msgid "No data set"
+msgstr "No hay datos"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:86
+msgid "Application"
+msgstr "Aplicación"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:90
+msgid "Connected"
+msgstr "Conectada"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:108
+msgid "There are no linked applications"
+msgstr "No hay aplicaciones vinculadas."
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:118
+msgid "User"
+msgstr "Usuario"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:122
+msgid "Authorized"
+msgstr "Autorizada"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:140
+msgid "There are no authorized users"
+msgstr "No hay usuarios autorizados."
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:159
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:167
+msgid "Manage your Mercado Libre Applications"
+msgstr "Gestiona tus aplicaciones de Mercado Libre"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:161
+msgid "Authorize API"
+msgstr "Autorizar API"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:163
+msgid "Refresh API Authorization"
+msgstr "Actualizar la autorización de la API"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:166
+msgid "Manual refresh Token"
+msgstr "Token de actualización manual"
+
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:222
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: ../includes/class-wp-mercadolibre-sync-activator.php:93
+msgid "Once every 5 seconds"
+msgstr "Una vez cada 5 segundos"
+
+#: ../includes/wp-mercadolibre-sync-functions.php:6
+msgid "No data set and / or saved yet."
+msgstr "No hay datos establecidos y / o guardados todavía."
+
+#: ../includes/wp-mercadolibre-sync-functions.php:22
+msgid "Okay, the API has been authorized. The data has been saved."
+msgstr "Bien, la API ha sido autorizada. Los datos se han guardado."
+
+#: ../includes/wp-mercadolibre-sync-functions.php:26
+msgid ""
+"The Token and expiration time have been refreshed. The data has been saved."
+msgstr ""
+"El token y el tiempo de caducidad se han actualizado. Los datos se han "
+"guardado."
+
+#: ../includes/wp-mercadolibre-sync-functions.php:30
+msgid "Excellent, your API is linked correctly."
+msgstr "Excelente, tu API está enlazada correctamente."
+
+#: ../includes/wp-mercadolibre-sync-functions.php:34
+msgid "You must authenticate your application to continue."
+msgstr "Debes autenticar tu aplicación para continuar."
+
+#: ../includes/wp-mercadolibre-sync-functions.php:38
+msgid ""
+"Your app has been authorized with a new code. Tokens and expiration time "
+"have been refreshed."
+msgstr ""
+"Tu  aplicación ha sido autorizada con un nuevo código. Los tokens y el "
+"tiempo de caducidad se han actualizado."
+
+#: ../shortcodes/partials/ml_get_item.php:16
+msgid "Price"
+msgstr "Precio"
+
+#: ../shortcodes/partials/ml_get_item.php:17
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: ../shortcodes/partials/ml_get_item.php:21
+msgid "See in Mercado Libre"
+msgstr "Ver en Mercado Libre"
+
+#: ../shortcodes/partials/ml_get_items.php:22
+msgid "error, please configure API settings."
+msgstr "error, por favor, configure los ajustes de la API."
+
+#~ msgid ""
+#~ "Bootclean requires at least ACF version 5. You are running version %s. "
+#~ "Please upgrade and try again."
+#~ msgstr ""
+#~ "Bootclean requiere al menos la versión 5 de ACF. Está ejecutando la "
+#~ "versión%s. Por favor actualice y vuelva a intentarlo."
+
+#~ msgid ""
+#~ "<b>Bootclean</b> uses ACF for better customization experience, without it "
+#~ "you will loose many extra features."
+#~ msgstr ""
+#~ "<b>Bootclean </b> utiliza ACF para una mejor experiencia de "
+#~ "personalización, sin él perderá muchas características adicionales."
+
+#~ msgid "Toggle navigation"
+#~ msgstr "Navegación de palanca"
+
+#~ msgid "Option updated"
+#~ msgstr "Opción actualizada"
+
+#~ msgid "Options not updated, something went wrong."
+#~ msgstr "Opciones no actualizadas, algo salió mal."
+
+#~ msgid ""
+#~ "Bootclean requires at least WordPress version 4.4. You are running "
+#~ "version %s. Please upgrade and try again."
+#~ msgstr ""
+#~ "Bootclean requiere al menos WordPress versión 4.4. Está ejecutando la "
+#~ "versión%s. Por favor actualice y vuelva a intentarlo."
+
+#~ msgid "Theme Layout"
+#~ msgstr "Diseño del tema"
+
+#~ msgid "Several settings pertaining to layout."
+#~ msgstr "Varios ajustes relacionados con el diseño."
+
+#~ msgid "Choose Type"
+#~ msgstr "Elegir Tipo"
+
+#~ msgid "None"
+#~ msgstr "Ninguno"
+
+#~ msgid "Template"
+#~ msgstr "Template"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Container class"
+#~ msgstr "Clase de Container"
+
+#~ msgid "Container > Row class"
+#~ msgstr "Container > Clase de fila"
+
+#~ msgid "Main content column class"
+#~ msgstr "Clase de columna de contenido principal"
+
+#~ msgid "Secondary content column class"
+#~ msgstr "Clase de columna de contenido secundario"
+
+#~ msgid "Add Layout Row"
+#~ msgstr "Agregar fila de diseño"
+
+#~ msgid "Inview Effect"
+#~ msgstr "Efecto Inview"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Ajax Load"
+#~ msgstr "Carga Ajax"
+
+#~ msgid ""
+#~ "Insert css code only. Use XS, SM... for particular bootstrap breakpoint."
+#~ msgstr ""
+#~ "Insertar código css solamente. Utilice XS, SM ... para un punto de "
+#~ "interrupción de arranque específico."
+
+#~ msgid "Background Color"
+#~ msgstr "Color de fondo"
+
+#~ msgid "Text Color"
+#~ msgstr "Color texto"
+
+#~ msgid "Custom Bootclean settings"
+#~ msgstr "Bootclean seteos customizados"
+
+#~ msgid "Website Visibility"
+#~ msgstr "Visibilidad del sitio web"
+
+#~ msgid "Customize this feature under"
+#~ msgstr "Personaliza esta característica bajo"
+
+#~ msgid "Options"
+#~ msgstr "Opciones"
+
+#~ msgid "BC Mainteneance"
+#~ msgstr "Mantenimiento BC"
+
+#~ msgid "Only logged users can view this site."
+#~ msgstr "Solo usuarios logeados pueden ver este sitio."
+
+#~ msgid "Category"
+#~ msgstr "Categoría"
+
+#~ msgid "All"
+#~ msgstr "Todo"
+
+#~ msgid "Tags"
+#~ msgstr "Etiquetas"
+
+#~ msgid "Load more"
+#~ msgstr "Cargar más"
+
+#~ msgid "No more post to load"
+#~ msgstr "No hay más para cargar"
+
+#~ msgid "Not found posts"
+#~ msgstr "No hay resultados"
+
+#~ msgid "Showing %u of %u."
+#~ msgstr "Mostrando %u de %u."
+
+#~ msgid "%1$s is deprecated. Use %2$s instead."
+#~ msgstr "%1$s es obsolte. Usar en su lugar %2$s."
+
+#~ msgid "Select"
+#~ msgstr "Seleccionar"
+
+#~ msgid "Search Ajax"
+#~ msgstr "Buscador Ajax"
+
+#~ msgid "Search"
+#~ msgstr "Buscar"
+
+#~ msgid "Reset"
+#~ msgstr "Resetear"
+
+#~ msgid "Reload"
+#~ msgstr "Recargar"
+
+#~ msgid "Property Record"
+#~ msgstr "Registro de propiedad"
+
+#~ msgid "Property Pricing"
+#~ msgstr "Precios"
+
+#~ msgid "Property Gallery"
+#~ msgstr "Galería de propiedad"
+
+#~ msgid "Property Location Map"
+#~ msgstr "Mapa de ubicación de la propiedad"
+
+#~ msgid "Available"
+#~ msgstr "Disponible"
+
+#~ msgid "Not available"
+#~ msgstr "No disponible"
+
+#~ msgid "Load Map"
+#~ msgstr "Cargar Mapa"
+
+#~ msgid "Price min"
+#~ msgstr "Precio mín"
+
+#~ msgid "Price max"
+#~ msgstr "Precio máx"
+
+#~ msgid "Iframe Map"
+#~ msgstr "Mapa Iframe"
+
+#~ msgid "Paste iframe URL code ONLY."
+#~ msgstr "Pegar URL del iframe SOLAMENTE."
+
+#~ msgid "Google Map"
+#~ msgstr "Mapa de Google"
+
+#~ msgid "Label"
+#~ msgstr "Etiqueta"
+
+#~ msgid "Ej: First half of January"
+#~ msgstr "Ej: Primer semana de Enero"
+
+#~ msgid "Description"
+#~ msgstr "Descripción"
+
+#~ msgid "Single Price Details"
+#~ msgstr "Detalle de precios simple"
+
+#~ msgid "Period prices list"
+#~ msgstr "Lista de precios por periodo"
+
+#~ msgid "Add, move, order list."
+#~ msgstr "Añadir, mover, ordenar lista."
+
+#~ msgid "Amount"
+#~ msgstr "Cantidad"
+
+#~ msgid "Property Temporary Prices"
+#~ msgstr "Precios Temporales de Propiedad"
+
+#~ msgid "Property Search Price"
+#~ msgstr "Precio de búsqueda de propiedad"
+
+#~ msgid "Use temporary prices?"
+#~ msgstr "¿Usar Precios Temporales?"
+
+#~ msgid "Property Type"
+#~ msgstr "Tipo de propiedad"
+
+#~ msgid "Property Operation"
+#~ msgstr "Operaciones"
+
+#~ msgid "Property Location"
+#~ msgstr "Ubicación de la propiedad"
+
+#~ msgid "Main Details"
+#~ msgstr "Detalles Principales"
+
+#~ msgid "Property Services"
+#~ msgstr "Servicios de propiedad"
+
+#~ msgid "Property Aditionals"
+#~ msgstr "Adicionales de propiedad"
+
+#~ msgid "Featured Image"
+#~ msgstr "Imagen destacada"
+
+#~ msgid "NO PRICE"
+#~ msgstr "SIN PRECIO"
+
+#~ msgid "Featured"
+#~ msgstr "Destacada"
+
+#~ msgid "Property Locations"
+#~ msgstr "Ubicaciones de propiedad"
+
+#~ msgid "Add New Property Location"
+#~ msgstr "Agregar Ubicación"
+
+#~ msgid "Property Operations"
+#~ msgstr "Operaciones de propiedad"
+
+#~ msgid "Add New Property Operation"
+#~ msgstr "Agregar Operación"
+
+#~ msgid "Property Types"
+#~ msgstr "Tipos de propiedad"
+
+#~ msgid "Add New Property Type"
+#~ msgstr "Agregar Tipo"
+
+#~ msgid "Add New Property Service"
+#~ msgstr "Agregar Servicio"
+
+#~ msgid "Add New Property Aditional"
+#~ msgstr "Agregar Adicional"
+
+#~ msgid "Properties"
+#~ msgstr "Propiedades"
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "Add new"
+#~ msgstr "Agregar Nuevo"
+
+#~ msgid "Published Properties: "
+#~ msgstr "Propiedades publicadas:"
+
+#~ msgid "Draft Properties: "
+#~ msgstr "Propiedades borrador:"
+
+#~ msgid "Realstate Activity"
+#~ msgstr "Actividad Inmobiliaria"
+
+#~ msgid "Property"
+#~ msgstr "Property"
+
+#~ msgid "Edit property"
+#~ msgstr "Editar Propiedad"
+
+#~ msgid "New property"
+#~ msgstr "Nueva Propiedad"
+
+#~ msgid "View property"
+#~ msgstr "Ver Propiedad"
+
+#~ msgid "Resources"
+#~ msgstr "Recursos"
+
+#~ msgid "Resource"
+#~ msgstr "Recurso"
+
+#~ msgid "Edit Resource"
+#~ msgstr "Editar Recurso"
+
+#~ msgid "New Resource"
+#~ msgstr "Nuevo Recurso"
+
+#~ msgid "View Resource"
+#~ msgstr "Ver Recurso"
+
+#~ msgid "Resource Type"
+#~ msgstr "Tipo Recurso"
+
+#~ msgid "Add Resource Type"
+#~ msgstr "Agregar Tipo Recurso"
+
+#~ msgid "Resource Category"
+#~ msgstr "Categoría de Recursos"
+
+#~ msgid "Add Resource Category"
+#~ msgstr "Agregar Catergoría Recurso "
+
+#~ msgid "Category: "
+#~ msgstr "Categoría:"
+
+#~ msgid "Type: "
+#~ msgstr "Tipo:"
+
+#~ msgid "Code"
+#~ msgstr "Código"
+
+#~ msgid "Resource Metadata"
+#~ msgstr "Metadatos de Recursos"
+
+#~ msgid "Add a menu"
+#~ msgstr "Agregar menú"
+
+#~ msgid "Comments are disabled on this site."
+#~ msgstr "Los comentarios están deshabilitados en este sitio."
+
+#~ msgid "&raquo;"
+#~ msgstr "&raquo;"
+
+#~ msgid "%1$s %2$s Feed"
+#~ msgstr "%1$s %2$s Feed"
+
+#~ msgid "%1$s %2$s %3$s Category Feed"
+#~ msgstr "%1$s %2$s %3$s Categoría Feed"
+
+#~ msgid "%1$s %2$s %3$s Tag Feed"
+#~ msgstr "%1$s %2$s %3$s Etiqueta Feed"
+
+#~ msgid "%1$s %2$s Posts by %3$s Feed"
+#~ msgstr "%1$s %2$s Publicaciones por %3$s Feed"
+
+#~ msgid "%1$s %2$s Search Results for &#8220;%3$s&#8221; Feed"
+#~ msgstr "%1$s %2$s Resultados de búsqueda para &#8220;%3$s&#8221; Feed"
+
+#~ msgid "%1$s %2$s %3$s Feed"
+#~ msgstr "%1$s %2$s %3$s Feed"
+
+#~ msgid "Welcome"
+#~ msgstr "Bienvenido"
+
+#~ msgid "Hi, site is using <b>%1$s</b> theme."
+#~ msgstr "Hola, estás usando el theme <b>%1$s</b>."
+
+#~ msgid "cURL is installed."
+#~ msgstr "cURL instalado"
+
+#~ msgid "cURL is not installed."
+#~ msgstr "cURL no instalado"
+
+#~ msgid "allow_url_fopen is installed."
+#~ msgstr "allow_url_fopen instalado"
+
+#~ msgid "allow_url_fopen is not installed."
+#~ msgstr "allow_url_fopen no instalado"
+
+#~ msgid "Back to"
+#~ msgstr "Volver a"
+
+#~ msgid "Edit Content Block"
+#~ msgstr "Editar bloque de contenido"
+
+#~ msgid "Fixed Content Block"
+#~ msgstr "Bloque de contenido fijo"
+
+#~ msgid "Template used"
+#~ msgstr "Plantilla usada"
+
+#~ msgid "Layout"
+#~ msgstr "Diseño"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Menú Primario"
+
+#~ msgid ""
+#~ "%s: Widget class not found. Make sure this widget exists and the class "
+#~ "name is correct"
+#~ msgstr ""
+#~ "%s: Widget class no encontrada. Asegúrate este widget existe y el nombre "
+#~ "de class es correcto."
+
+#~ msgid "First"
+#~ msgstr "Primera"
+
+#~ msgid "Last"
+#~ msgstr "Última"
+
+#~ msgid "Page"
+#~ msgstr "Página"
+
+#~ msgid "of"
+#~ msgstr "de"
+
+#~ msgid "posts under this term."
+#~ msgstr "publicaciones bajo este término."
+
+#~ msgid "Previous"
+#~ msgstr "Anterior"
+
+#~ msgid "Next"
+#~ msgstr "Siguiente"
+
+#~ msgid "Read more"
+#~ msgstr "Leer más"
+
+#~ msgid "Posts navigation"
+#~ msgstr "Navegación de publicaciones"
+
+#~ msgid "Home"
+#~ msgstr "Inicio"
+
+#~ msgid "Archive"
+#~ msgstr "Archivo"
+
+#~ msgid "Search Results"
+#~ msgstr "Resultados de Búsqueda"
+
+#~ msgid "Tagged as"
+#~ msgstr "Etiquetado como"
+
+#~ msgid "Article"
+#~ msgstr "Artículo"
+
+#~ msgid "Error 404"
+#~ msgstr "Error 404"
+
+#~ msgid "Posted on"
+#~ msgstr "Publicado en"
+
+#~ msgid "Share this on"
+#~ msgstr "Compartir en"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid "Categories"
+#~ msgstr "Categorias"
+
+#~ msgid "Templates"
+#~ msgstr "Plantillas"
+
+#~ msgid "Add New"
+#~ msgstr "Agregar Nuevo"
+
+#~ msgid "Add New Template"
+#~ msgstr "Agregar nueva Plantilla"
+
+#~ msgid "New Template"
+#~ msgstr "Nueva Plantilla"
+
+#~ msgid "Edit Template"
+#~ msgstr "Editar Plantilla"
+
+#~ msgid "View Template"
+#~ msgstr "Ver Plantilla"
+
+#~ msgid "All Templates"
+#~ msgstr "Todas las Plantillas"
+
+#~ msgid "Search Templates"
+#~ msgstr "Buscar Plantillas"
+
+#~ msgid "Parent Template:"
+#~ msgstr "Plantilla padre"
+
+#~ msgid "No Template found."
+#~ msgstr "Plantilla"
+
+#~ msgid "No Template found in Trash."
+#~ msgstr "No hay Plantillas en la Papelera"
+
+#~ msgid "Bootclean Template Builder, or BTB!!."
+#~ msgstr "Bootclean Template Builder, o BTB!!."
+
+#~ msgid "Template Types"
+#~ msgstr "Typo de Plantillas"
+
+#~ msgid "Search Types"
+#~ msgstr "Buscar Typos"
+
+#~ msgid "All Types"
+#~ msgstr "Todos los Typos"
+
+#~ msgid "Parent Type"
+#~ msgstr "Typo ancestro"
+
+#~ msgid "Parent Type:"
+#~ msgstr "Typo ancestro:"
+
+#~ msgid "Edit Type"
+#~ msgstr "Editar Typo"
+
+#~ msgid "Update Type"
+#~ msgstr "Actualizar Typo"
+
+#~ msgid "Add New Type"
+#~ msgstr "Agregar Tipo"
+
+#~ msgid "New Type"
+#~ msgstr "Agregar Tipo"
+
+#~ msgid "Template ID / Shortcode"
+#~ msgstr "Template ID / Shortcode"
+
+#~ msgid "One"
+#~ msgstr "Uno"
+
+#~ msgid "Two"
+#~ msgstr "Dos"
+
+#~ msgid "Three"
+#~ msgstr "Tres"
+
+#~ msgid "Four"
+#~ msgstr "Cuatro"
+
+#~ msgid "Five"
+#~ msgstr "Cinco"
+
+#~ msgid "Textarea description."
+#~ msgstr "Descripción Textarea."
+
+#~ msgid "Select a Category"
+#~ msgstr "Seleccione una Categoría"
+
+#~ msgid "Select a Page"
+#~ msgstr "Seleccione una página"
+
+#~ msgid "Example Background"
+#~ msgstr "Fondo ejemplo"
+
+#~ msgid "Multicheck description."
+#~ msgstr "Descripción multicheck."
+
+#~ msgid "&times;"
+#~ msgstr "&times;"
+
+#~ msgid "Options updated falied."
+#~ msgstr "Actualización de opciones fallida."
+
+#~ msgid "Options updated."
+#~ msgstr "Opciones actualizadas."
+
+#~ msgid "Options saved for first time! Enjoy it."
+#~ msgstr "¡Opciones guardadas por primera vez! Disfrútala."
+
+#~ msgid "Theme Options"
+#~ msgstr "Opciones de tema"
+
+#~ msgid "Click OK to reset. Any theme settings will be lost!"
+#~ msgstr ""
+#~ "Haga clic en Aceptar para restablecer. ¡Cualquier configuración de tema "
+#~ "se perderá!"
+
+#~ msgid "Default options restored."
+#~ msgstr "Opciones predeterminadas restauradas."
+
+#~ msgid "Options saved."
+#~ msgstr "Opciones salvadas."
+
+#~ msgid "View File"
+#~ msgstr "Ver Archivo"
+
+#~ msgid "No file chosen"
+#~ msgstr "Ningún archivo elegido"
+
+#~ msgid "Upload"
+#~ msgstr "Subir"
+
+#~ msgid "Remove"
+#~ msgstr "Eliminar"
+
+#~ msgid "Upgrade your version of WordPress for full media support."
+#~ msgstr "Actualice su versión de WordPress para soporte completo de medios."
+
+#~ msgid "No Repeat"
+#~ msgstr "No repetir"
+
+#~ msgid "Repeat Horizontally"
+#~ msgstr "Repetir horizontalmente"
+
+#~ msgid "Repeat Vertically"
+#~ msgstr "Repetir verticalmente"
+
+#~ msgid "Repeat All"
+#~ msgstr "Repetir todo"
+
+#~ msgid "Top Left"
+#~ msgstr "Arriba a la izquierda"
+
+#~ msgid "Top Center"
+#~ msgstr "Arriba al centro"
+
+#~ msgid "Top Right"
+#~ msgstr "Arriba a la derecha"
+
+#~ msgid "Middle Left"
+#~ msgstr "Medio izquierda"
+
+#~ msgid "Middle Center"
+#~ msgstr "Medio Centro"
+
+#~ msgid "Middle Right"
+#~ msgstr "Medio derecha"
+
+#~ msgid "Bottom Left"
+#~ msgstr "Abajo a la izquierda"
+
+#~ msgid "Bottom Center"
+#~ msgstr "Abajo a la centro"
+
+#~ msgid "Bottom Right"
+#~ msgstr "Abajo a la derecha"
+
+#~ msgid "Scroll Normally"
+#~ msgstr "Desplazarse normalmente"
+
+#~ msgid "Fixed in Place"
+#~ msgstr "Fijo en el lugar"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgid "Italic"
+#~ msgstr "Italica"
+
+#~ msgid "Bold"
+#~ msgstr "Negrita"
+
+#~ msgid "Bold Italic"
+#~ msgstr "Negrita italica"
+
+#~ msgid "Login screen"
+#~ msgstr "Pantalla de ingreso al sistema"
+
+#~ msgid "Enable custom Login screen"
+#~ msgstr "Habilitar pantalla de inicio de sesión personalizada"
+
+#~ msgid "Data will not be removed."
+#~ msgstr "Los datos no serán eliminados."
+
+#~ msgid "Body styles"
+#~ msgstr "Estilos Body"
+
+#~ msgid "Background"
+#~ msgstr "Fondo"
+
+#~ msgid "Text color"
+#~ msgstr "Color texto"
+
+#~ msgid "Text color hover"
+#~ msgstr "Color texto hover"
+
+#~ msgid "Brand"
+#~ msgstr "Marca"
+
+#~ msgid "Brand logo"
+#~ msgstr "Logotipo"
+
+#~ msgid "Change default WP logo here."
+#~ msgstr "Cambia el logo predeterminado de WP aquí."
+
+#~ msgid "Logo width (px)"
+#~ msgstr "Ancho del logo (px)"
+
+#~ msgid "Logo height (px)"
+#~ msgstr "Altura del logo (px)"
+
+#~ msgid "Custom CSS"
+#~ msgstr "CSS customizado"
+
+#~ msgid "Insert custom styles here"
+#~ msgstr "Insertar estilos personalizados aquí"
+
+#~ msgid "Under Construction"
+#~ msgstr "En construcción"
+
+#~ msgid "TITLE"
+#~ msgstr "TÍTULO"
+
+#~ msgid "Custom page TITLE."
+#~ msgstr "TÍTULO de página personalizada"
+
+#~ msgid "BODY > HTML"
+#~ msgstr "BODY > HTML"
+
+#~ msgid ""
+#~ "Customize how site looks like when \"Settings->Reading->Website Visibility"
+#~ "\" is enabled."
+#~ msgstr ""
+#~ "Personalice cómo se ve el sitio cuando  \"Configuración-> Lectura-> "
+#~ "Visibilidad del sitio web \" está habilitado."
+
+#~ msgid "HEAD > STYLE"
+#~ msgstr "HEAD > STYLE"
+
+#~ msgid "Add just custom css here. No STYLE tag needed."
+#~ msgstr ""
+#~ "Agrega solo css personalizado aquí. No se necesita etiqueta de STYLE."
+
+#~ msgid "Javascript"
+#~ msgstr "Javascript"
+
+#~ msgid "Add just custom js here. No SCRIPT tag needed."
+#~ msgstr "Añade solo js personalizados aquí. No se necesita etiqueta SCRIPT."
+
+#~ msgid "Disable Updates Notifications"
+#~ msgstr "Desactivar las notificaciones de actualizaciones"
+
+#~ msgid "Disable Checks for Updates"
+#~ msgstr "Deshabilitar cheques para actualizaciones"
+
+#~ msgid "Color Scheme"
+#~ msgstr "Esquema de colores"
+
+#~ msgid "Customize colors"
+#~ msgstr "Personalizar colores"
+
+#~ msgid ""
+#~ "This color variations are the ones in the front-end styles used by theme, "
+#~ "and also are applied to UI elements accross back-end side."
+#~ msgstr ""
+#~ "Estas variaciones de color son las de los estilos de front-end utilizados "
+#~ "por el tema, y también se aplican a los elementos de la interfaz de "
+#~ "usuario en el lado de back-end."
+
+#~ msgid "Show Options Names in panels."
+#~ msgstr "Mostrar opciones de nombres en paneles."
+
+#~ msgid "Template helpers."
+#~ msgstr "Ayudantes de plantilla."
+
+#~ msgid "Enable Realstate post types."
+#~ msgstr "Habilitar Propiedades"
+
+#~ msgid "Enable Resources post types."
+#~ msgstr "Habilitar Resource Post Types."
+
+#~ msgid "Widget Areas"
+#~ msgstr "Áreas de Widgets"
+
+#~ msgid "Manage widget areas"
+#~ msgstr "Administrar áreas de widgets"
+
+#~ msgid "How to"
+#~ msgstr "Cómo"
+
+#~ msgid ""
+#~ "Add as many widgets areas needed, they will appear under Appeareance -> "
+#~ "Widgets for you to use."
+#~ msgstr ""
+#~ "Agregue tantas áreas de widgets como sean necesarias, aparecerán en "
+#~ "Apariencia -> Widgets para su uso."
+
+#~ msgid ""
+#~ "<b>Take care</b> when removing/renaming, idealy don´t do it unless you re-"
+#~ "edit the windgets areas and it´s contents too. If you accidentaly delete "
+#~ "a widget area, you can create it again with the same name, that way you "
+#~ "wiget area will appear again with all the widgets inside."
+#~ msgstr ""
+#~ "<b> Tenga cuidado </b> al eliminar / renombrar, idealmente, no lo haga a "
+#~ "menos que vuelva a editar las áreas de windgets y su contenido también. "
+#~ "Si borra accidentalmente un área de widgets, puede crearlo de nuevo con "
+#~ "el mismo nombre, de esa manera aparecerá nuevamente el área de wiget con "
+#~ "todos los widgets dentro."
+
+#~ msgid ""
+#~ "Once you have widgets areas created, you can use them over pages almost "
+#~ "anywhere and also here on Layout settings for a default use over the "
+#~ "site. Ex, you can create a Template that will hold a widget area and then "
+#~ "use that template as a Footer on some pages but not on all of them. Same "
+#~ "applys for Sidebars or whatever you need that can be done using widgets."
+#~ msgstr ""
+#~ "Una vez que haya creado áreas de widgets, puede usarlos en las páginas "
+#~ "casi en cualquier lugar y también aquí en la configuración de diseño para "
+#~ "un uso predeterminado en el sitio. Por ejemplo, puede crear una plantilla "
+#~ "que contendrá un área de widget y luego usar esa plantilla como pie de "
+#~ "página en algunas páginas, pero no en todas. Las mismas aplicaciones para "
+#~ "las barras laterales o lo que necesite que se puede hacer usando widgets."
+
+#~ msgid "Main Content"
+#~ msgstr "Contenido Principal"
+
+#~ msgid "Enable for custom settinngs."
+#~ msgstr "Habilitado para configuraciones personalizadas."
+
+#~ msgid "Secondary Content Areas"
+#~ msgstr "Áreas de contenido secundario"
+
+#~ msgid "Theme has "
+#~ msgstr "El Tema tiene"
+
+#~ msgid "Secondary Content Area"
+#~ msgstr "Área de contenido secundario"
+
+#~ msgid "over all layouts"
+#~ msgstr "en todos los layouts"
+
+#~ msgid "Secondary Areas Default content"
+#~ msgstr "Áreas secundarias Contenido predeterminado"
+
+#~ msgid "Enable for custom settings or use defaults."
+#~ msgstr ""
+#~ "Habilitar para configuraciones personalizadas o usar valores "
+#~ "predeterminados."
+
+#~ msgid "Select a Template"
+#~ msgstr "Seleccionar una Plantilla"
+
+#~ msgid "Select a Widget Area"
+#~ msgstr "Seleccione un área de widgets"
+
+#~ msgid "Main Content Builder"
+#~ msgstr "Main Content Builder"
+
+#~ msgid "Custom Template Layout Locations"
+#~ msgstr "Ubicaciones de diseño de plantillas personalizadas"
+
+#~ msgid ""
+#~ "Here you can change the layout used for each template, that is posts, "
+#~ "pages, archives, when home, when blog, and so on. Also child themes can "
+#~ "add more locations and more layout templates using filters."
+#~ msgstr ""
+#~ "Aquí puede cambiar el diseño utilizado para cada plantilla, es decir, "
+#~ "publicaciones, páginas, archivos, cuándo está en Home, cuándo Blog, etc. "
+#~ "También los temas secundarios pueden agregar más ubicaciones y más "
+#~ "plantillas de diseño usando filtros."
+
+#~ msgid "Enable for custom location settings."
+#~ msgstr "Habilitar para la configuración de ubicación personalizada."
+
+#~ msgid "Layout Locations"
+#~ msgstr "Ubicaciones de diseño"
+
+#~ msgid "Container Type"
+#~ msgstr "Tipo de Propiedad "
+
+#~ msgid "Row"
+#~ msgstr "Row"
+
+#~ msgid "Row class"
+#~ msgstr "Row class"
+
+#~ msgid "Column"
+#~ msgstr "Column"
+
+#~ msgid "Column class"
+#~ msgstr "Column class"
+
+#~ msgid "Main Content Area"
+#~ msgstr "Contenido Principal "
+
+#~ msgid "Container"
+#~ msgstr "Container"
+
+#~ msgid ""
+#~ "Here you can change settings for each layout, that is id, class, custom "
+#~ "attributes, so on. Child themes can filter anything too from functions. "
+#~ msgstr ""
+#~ "Aquí puede cambiar la configuración de cada diseño, es decir, id, clase, "
+#~ "atributos personalizados, etc. Los temas infantiles pueden filtrar "
+#~ "cualquier cosa también de las funciones."
+
+#~ msgid "Custom Layout Settings"
+#~ msgstr "Bootclean seteos customizados "
+
+#~ msgid "Enable for custom settings."
+#~ msgstr "Habilitar para la configuración personalizada."
+
+#~ msgid "Layout Settings"
+#~ msgstr "Opciones de Layouts"
+
+#~ msgid "Main Footer"
+#~ msgstr "Pie de página Principal"
+
+#~ msgid "Enable for custom or none."
+#~ msgstr "Habilitar para customizado o ninguno."
+
+#~ msgid "Needs some Template type \"footer\" created."
+#~ msgstr "Necesita algún tipo de plantilla  \"pie de página \" creado."
+
+#~ msgid "Main Navbar"
+#~ msgstr "Barra de navegación principal"
+
+#~ msgid "Main Page Header"
+#~ msgstr "Encabezado de la página principal"
+
+#~ msgid ""
+#~ "Sorry the page you are looking at does not exist or an error occurred. "
+#~ "Try again later or contact us if the problem persists."
+#~ msgstr ""
+#~ "Lamentamos que la página que estás viendo no exista o haya ocurrido un "
+#~ "error. Inténtalo de nuevo más tarde o contáctanos si el problema persiste."
+
+#~ msgid "Sorry what you are looking at does not exist or an error occurred."
+#~ msgstr ""
+#~ "Lamentamos que la página que estás viendo no exista o haya ocurrido un "
+#~ "error. Inténtalo de nuevo más tarde o contáctanos si el problema "
+#~ "persiste. "
+
+#~ msgid "Try again later or use a diferent search combination."
+#~ msgstr ""
+#~ "Inténtalo de nuevo más tarde o usa una combinación de búsqueda diferente."
+
+#~ msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+#~ msgstr "Editar<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#~ msgid "Tag: "
+#~ msgstr "Etiquetaa:"
+
+#~ msgid "Load more posts"
+#~ msgstr "Cargar más"
+
+#~ msgid "No more posts to load"
+#~ msgstr "No hay más para cargar"
+
+#~ msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+#~ msgstr "Leer más<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#~ msgid "Search Results for: %s"
+#~ msgstr "Resutados de Búsqueda para: %s"
+
+#~ msgid "One Content Area"
+#~ msgstr "Contenido Principal"
+
+#~ msgid "Just One content area, free form."
+#~ msgstr "Solo un área de contenido, forma libre."
+
+#~ msgid "2 Content Areas - Main Bottom"
+#~ msgstr "2 Áreas de contenido - Parte inferior principal"
+
+#~ msgid ""
+#~ "Container with 2 content areas, main on the bottom, secondary on the top."
+#~ msgstr ""
+#~ "Contenedor con 2 áreas de contenido, principal en la parte inferior, "
+#~ "secundario en la parte superior."
+
+#~ msgid "2 Content Areas - Main Left"
+#~ msgstr "2 Áreas de Contenido - Izquierda Principal"
+
+#~ msgid ""
+#~ "Container with 2 content areas, main on the left, secondary on the right."
+#~ msgstr ""
+#~ "Contenedor con 2 áreas de contenido, principal a la izquierda, secundario "
+#~ "a la derecha."
+
+#~ msgid "2 Content Areas - Main Right"
+#~ msgstr "2 áreas de contenido - derecho principal"
+
+#~ msgid ""
+#~ "Fixed Container with 2 content areas, main on the right, secondary on the "
+#~ "left."
+#~ msgstr ""
+#~ "Contenedor fijo con 2 áreas de contenido, principal a la derecha, "
+#~ "secundario a la izquierda."
+
+#~ msgid "2 Content Areas - Main Top"
+#~ msgstr "2 Áreas de contenido - Principal superior"
+
+#~ msgid ""
+#~ "Container with 2 content areas, main on the top, secondary on the bottom."
+#~ msgstr ""
+#~ "Contenedor con 2 áreas de contenido, principal en la parte superior, "
+#~ "secundario en la parte inferior."
+
+#~ msgid "3 Content Areas - Main Center"
+#~ msgstr "3 Áreas de contenido - Centro principal"
+
+#~ msgid ""
+#~ "Container with 3 content areas, main on the center, secondary areas on "
+#~ "the left and right."
+#~ msgstr ""
+#~ "Contenedor con 3 áreas de contenido, principal en el centro, áreas "
+#~ "secundarias a la izquierda y derecha."
+
+#~ msgid "3 Content Areas - Main Right"
+#~ msgstr "3 áreas de contenido - derecho principal"
+
+#~ msgid ""
+#~ "Container with 3 content areas, main on the right, 2 secondary areas on "
+#~ "the left."
+#~ msgstr ""
+#~ "Contenedor con 3 áreas de contenido, principal a la derecha, 2 áreas "
+#~ "secundarias a la izquierda."
+
+#~ msgid "3 Content Areas - Main Middle"
+#~ msgstr "3 Áreas de contenido - Intermedio principal"
+
+#~ msgid ""
+#~ "Container with 3 content areas, main on the middle, 2 secondary areas on "
+#~ "the top and bottom."
+#~ msgstr ""
+#~ "Contenedor con 3 áreas de contenido, principal en el medio, 2 áreas "
+#~ "secundarias en la parte superior e inferior."
+
+#~ msgid "3 Content Areas - Main Left"
+#~ msgstr "3 áreas de contenido - Principal izquierda"
+
+#~ msgid ""
+#~ "Container with 3 content areas, main on the left, 2 secondary areas on "
+#~ "the right."
+#~ msgstr ""
+#~ "Contenedor con 3 áreas de contenido, principal a la izquierda, 2 áreas "
+#~ "secundarias a la derecha."
+
+#~ msgid "Slide Gallery"
+#~ msgstr "Galería Slider"
+
+#~ msgid "Details"
+#~ msgstr "Detalles"
+
+#~ msgid "Location Map"
+#~ msgstr "Mapa de localización"
+
+#~ msgid "Operation"
+#~ msgstr "Operación"
+
+#~ msgid "Temporary Prices"
+#~ msgstr "Precios Temporales"
+
+#~ msgid "Location"
+#~ msgstr "Localización"
+
+#~ msgid "Features"
+#~ msgstr "Caracteristicas"
+
+#~ msgid "Services"
+#~ msgstr "Servicios"
+
+#~ msgid "Aditionals"
+#~ msgstr "Adicionales"
+
+#~ msgid "Related Properties"
+#~ msgstr "Propiedades relacionadas"
+
+#~ msgid "Uruguay"
+#~ msgstr "Uruguay"
+
+#~ msgid "Argentina"
+#~ msgstr "Argentina"
+
+#~ msgid "Brasil"
+#~ msgstr "Brasil"
+
+#~ msgid "Sale"
+#~ msgstr "Venta"
+
+#~ msgid "Rental"
+#~ msgstr "Alquiler"
+
+#~ msgid "Temporary rent"
+#~ msgstr "Alquiler Temporario"
+
+#~ msgid "House"
+#~ msgstr "Casa"
+
+#~ msgid "Apartment"
+#~ msgstr "Apartamento"
+
+#~ msgid "Land"
+#~ msgstr "Terreno"
+
+#~ msgid "Office"
+#~ msgstr "Officina"
+
+#~ msgid "Running water"
+#~ msgstr "Agua corriente"
+
+#~ msgid "Cable"
+#~ msgstr "Cable"
+
+#~ msgid "Sewer"
+#~ msgstr "Alcantarilla"
+
+#~ msgid "Electricity"
+#~ msgstr "Electricidad"
+
+#~ msgid "Natural gas"
+#~ msgstr "Gas Natural"
+
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgid "Telephone"
+#~ msgstr "Teléfono"
+
+#~ msgid "Built Area"
+#~ msgstr "Área construida"
+
+#~ msgid "Total Area"
+#~ msgstr "Área total"
+
+#~ msgid "Rooms"
+#~ msgstr "Habitaciones"
+
+#~ msgid "Toilets"
+#~ msgstr "Baños"
+
+#~ msgid "Bedrooms"
+#~ msgstr "Habitaciones"
+
+#~ msgid "Garage"
+#~ msgstr "Garage"
+
+#~ msgid "Loft"
+#~ msgstr "Loft"
+
+#~ msgid "Balcony"
+#~ msgstr "Balcón"
+
+#~ msgid "Laundry"
+#~ msgstr "Lavandería"
+
+#~ msgid "Show All"
+#~ msgstr "Ver todo"
+
+#~ msgid "Property Features"
+#~ msgstr "Caracteristicas de Propiedades"
+
+#~ msgid "New Type Name"
+#~ msgstr "Nuevo Typo"
+
+#~ msgid "Permanent link to "
+#~ msgstr "Enlace permanente a "
+
+#~ msgid "< Left aside"
+#~ msgstr "< Lateral Izquierda"
+
+#~ msgid "Right aside >"
+#~ msgstr "Lateral Derecha >"
+
+#~ msgid "Full width"
+#~ msgstr "Ancho total"
+
+#~ msgid "News"
+#~ msgstr "Novedades"
+
+#~ msgid "Add News"
+#~ msgstr "Agregar Novedad"
+
+#~ msgid "News Tags"
+#~ msgstr "Etiquetas"
+
+#~ msgid "New"
+#~ msgstr "Novedad"
+
+#, fuzzy
+#~ msgid "Edit This New"
+#~ msgstr "Editar Novedades"
+
+#~ msgid "No News found"
+#~ msgstr "No hay Novedades"
+
+#~ msgid "No News found in Trash"
+#~ msgstr "No hay Novedades en la Papelera"
+
+#~ msgid "All News"
+#~ msgstr "Todas las Novedades"
+
+#~ msgid "Design"
+#~ msgstr "Diseño"
+
+#~ msgid "Yes"
+#~ msgstr "Si"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#, fuzzy
+#~ msgid "Architecture"
+#~ msgstr "Archivo"
+
+#~ msgid "Slider Items"
+#~ msgstr "Elementos del Slider"
+
+#~ msgid "Slider Config"
+#~ msgstr "Configuración del Slider"
+
+#~ msgid "Size"
+#~ msgstr "Tamaño"
+
+#~ msgid "Overlay background?"
+#~ msgstr "¿Fondo de superposición?"
+
+#~ msgid "Force Transparent Header?"
+#~ msgstr "¿Forzar Header transparente?"
+
+#~ msgid "Force Full Height"
+#~ msgstr "Forzar Alto 100%"
+
+#~ msgid "Fade In/Out?"
+#~ msgstr "Efecto opacidad?"
+
+#~ msgid "<i class=\"fa fa-thumb-tack\"></i> Bootclean Quicklinks"
+#~ msgstr "<i class=\"fa fa-thumb-tack\"></i> Bootclean Atajos."
+
+#~ msgid "Menus"
+#~ msgstr "Menues"
+
+#~ msgid "Contact Forms"
+#~ msgstr "Formularios de Contacto"
+
+#~ msgid "Sliders"
+#~ msgstr "Sliders"
+
+#~ msgid "Banners"
+#~ msgstr "Banners"
+
+#~ msgid "Banner"
+#~ msgstr "Banner"
+
+#~ msgid "Comboboxes"
+#~ msgstr "Comboboxes"
+
+#~ msgid "Combobox"
+#~ msgstr "Combobox"
+
+#~ msgid "Megamenu"
+#~ msgstr "Megamenu"
+
+#~ msgid "Modals"
+#~ msgstr "Modals"
+
+#~ msgid "Modal"
+#~ msgstr "Modal"
+
+#~ msgid "Edit '%s' %s."
+#~ msgstr "Editar '%s' %s."
+
+#~ msgid "Search for:"
+#~ msgstr "Resutados de Búsqueda para: "
+
+#~ msgid "Page %s"
+#~ msgstr "Página %s"
+
+#~ msgid "&#8250;"
+#~ msgstr "&#8250;"
+
+#~ msgid "&#39;"
+#~ msgstr "&#39;"
+
+#~ msgid "Item has not direct link from admin: "
+#~ msgstr "El item no tiene link directo desde el admin."
+
+#, fuzzy
+#~ msgid "Edit this Modal."
+#~ msgstr "Editar Novedades"
+
+#, fuzzy
+#~ msgid "Edit this Megamenu."
+#~ msgstr "Editar Novedades"
+
+#~ msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+#~ msgstr "Siguiente <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+#~ msgstr "<span class=\"meta-nav\">&larr;</span> Anterior"
+
+#~ msgid "<i class=\"fa fa-angle-left\"></i>"
+#~ msgstr "<i class=\"fa fa-angle-left\"></i>"
+
+#~ msgid "<i class=\"fa fa-angle-right\"></i>"
+#~ msgstr "<i class=\"fa fa-angle-right\"></i>"
+
+#~ msgid "Show More"
+#~ msgstr "Mostrar más"
+
+#~ msgid "Show Less"
+#~ msgstr "Mostrar menos"
+
+#~ msgid "Back to Website"
+#~ msgstr "Volver al sitio web"
+
+#~ msgid "BC Widget"
+#~ msgstr "BC Widget"
+
+#~ msgid "Bootclean Widget"
+#~ msgstr "Bootclean Widget"
+
+#, fuzzy
+#~ msgid "Add New Offer Feature"
+#~ msgstr "Agregar Operación"
+
+#~ msgid "Footer"
+#~ msgstr "Footer"
+
+#, fuzzy
+#~ msgid "New Footer"
+#~ msgstr "Nuevo Miembro"
+
+#, fuzzy
+#~ msgid "Search Footer"
+#~ msgstr "Resutados de Búsqueda para: "
+
+#, fuzzy
+#~ msgid "Parent Footer:"
+#~ msgstr "Página padre:"
+
+#, fuzzy
+#~ msgid "No Footer found."
+#~ msgstr "No hay Miembros"
+
+#, fuzzy
+#~ msgid "No Footer found in Trash."
+#~ msgstr "No hay Miembros en la Papelera"
+
+#, fuzzy
+#~ msgid "Footer Content."
+#~ msgstr "Menú Pié"
+
+#~ msgid "Listing Operations"
+#~ msgstr "Operaciones"
+
+#, fuzzy
+#~ msgid "Add New Listing Operation"
+#~ msgstr "Agregar Operación"
+
+#~ msgid "Listing Types"
+#~ msgstr "Tipo de Propiedad"
+
+#, fuzzy
+#~ msgid "Add New Listing Type"
+#~ msgstr "Tipo de Propiedad"
+
+#, fuzzy
+#~ msgid "Listing Fields Types"
+#~ msgstr "Tipo de Propiedad"
+
+#, fuzzy
+#~ msgid "Listing Field Type"
+#~ msgstr "Tipo de Propiedad"
+
+#, fuzzy
+#~ msgid "Add New Listing Field Type"
+#~ msgstr "Tipo de Propiedad"
+
+#, fuzzy
+#~ msgid "Listing Location"
+#~ msgstr "Locación"
+
+#, fuzzy
+#~ msgid "Add New Listing Location"
+#~ msgstr "Agregar Operación"
+
+#~ msgid "Listings"
+#~ msgstr "Propiedades"
+
+#~ msgid "Listing"
+#~ msgstr "Propiedad"
+
+#, fuzzy
+#~ msgid "Edit Listing"
+#~ msgstr "Propiedad"
+
+#, fuzzy
+#~ msgid "New Listing"
+#~ msgstr "Propiedad"
+
+#~ msgid "View Listing"
+#~ msgstr "Propiedad"
+
+#~ msgid "Projects"
+#~ msgstr "Proyectos"
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"
+
+#, fuzzy
+#~ msgid "Add New Projects"
+#~ msgstr "Agregar Zona"
+
+#, fuzzy
+#~ msgid "View Projects"
+#~ msgstr "Ver Novedades"
+
+#, fuzzy
+#~ msgid "All Projects"
+#~ msgstr "Todas las Novedades"
+
+#~ msgid "Parent Project:"
+#~ msgstr "Proyecto Padre"
+
+#, fuzzy
+#~ msgid "No Projects found."
+#~ msgstr "No hay Novedades"
+
+#, fuzzy
+#~ msgid "No Projects found in Trash."
+#~ msgstr "No hay Novedades en la Papelera"
+
+#~ msgid "Team members"
+#~ msgstr "Equipo"
+
+#~ msgid "Team member"
+#~ msgstr "Miembro"
+
+#~ msgid "Add New Member"
+#~ msgstr "Agregar Miembro"
+
+#~ msgid "New Member"
+#~ msgstr "Nuevo Miembro"
+
+#~ msgid "Edit Member"
+#~ msgstr "Editar Miembro"
+
+#~ msgid "View Member"
+#~ msgstr "Ver Miembro"
+
+#~ msgid "All Members"
+#~ msgstr "Todos los Miembros"
+
+#~ msgid "Search Members"
+#~ msgstr "Buscar Miembros"
+
+#~ msgid "Parent Member:"
+#~ msgstr "Página padre:"
+
+#~ msgid "No Member found."
+#~ msgstr "No hay Miembros"
+
+#~ msgid "No Member found in Trash."
+#~ msgstr "No hay Miembros en la Papelera"
+
+#~ msgid "Member Position"
+#~ msgstr "Posición/Descripción"
+
+#~ msgid "Member Thumbnail"
+#~ msgstr "Imagen"
+
+#~ msgid "Page not found"
+#~ msgstr "Página no encontrada"
+
+#~ msgid "Sorry, nothing here."
+#~ msgstr "Lo siento, nada por aquí."
+
+#~ msgid "NEWS"
+#~ msgstr "NOTICIAS"
+
+#~ msgid "PROPERTIES"
+#~ msgstr "PROPIEDADES"
+
+#~ msgid "404 error"
+#~ msgstr "404 error"
+
+#~ msgid "ARTICLES"
+#~ msgstr "ARTÍCULOS"
+
+#~ msgid "ESTATE"
+#~ msgstr "INMUEBLES"
+
+#~ msgid "Read More"
+#~ msgstr "Leer más"
+
+#~ msgid "Download Options"
+#~ msgstr "Opciones de descarga"
+
+#~ msgid "Contact us"
+#~ msgstr "Contacto"
+
+#~ msgid "Contact for more information"
+#~ msgstr "Contactános por más informaión"
+
+#~ msgid "Back / See more listings"
+#~ msgstr "Volver / Ver más propiedades"
+
+#~ msgid "This template require ACF Pro to be installed."
+#~ msgstr "Esta plantilla requiere ACF Pro instalado."
+
+#, fuzzy
+#~ msgid "Main Menu Top"
+#~ msgstr "Menú Principal"
+
+#, fuzzy
+#~ msgid "Footer Menu 2"
+#~ msgstr "Menú Pié"
+
+#, fuzzy
+#~ msgid "Footer Menu 3"
+#~ msgstr "Menú Pié"
+
+#, fuzzy
+#~ msgid "Footer Menu 4"
+#~ msgstr "Menú Pié"
+
+#~ msgid "Map/Adress"
+#~ msgstr "Dirección/Mapa"
+
+#~ msgid "Teamssss members"
+#~ msgstr "Equipo"
+
+#~ msgid "&#8249;"
+#~ msgstr "&#8249;"
+
+#~ msgid "Sidebar Posts"
+#~ msgstr "Sidebar para Novedades"
+
+#~ msgid "Sidebar Listings"
+#~ msgstr "Propiedades Sidebar"
+
+#~ msgid "Listing Zones"
+#~ msgstr "Zonas"
+
+#~ msgid "Zone"
+#~ msgstr "Zona"
+
+#~ msgid "Sidebar News"
+#~ msgstr "Sidebar News"
+
+#~ msgid "This listing has expired."
+#~ msgstr "Esta propiedad ha expirado."

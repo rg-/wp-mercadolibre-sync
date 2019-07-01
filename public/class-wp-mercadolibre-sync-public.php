@@ -143,6 +143,7 @@ class Wp_Mercadolibre_Sync_Public {
 
 	}
 
+	// ??
 	public function template_get_item($template) {
 		/**
 		 * This function is provided for demonstration purposes only.

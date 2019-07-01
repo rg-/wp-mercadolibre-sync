@@ -185,6 +185,9 @@ class Wp_Mercadolibre_Sync {
 			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
 		}
 		$this->loader->add_action( 'admin_body_class', $plugin_admin, 'admin_body_class' );
+
+
+		$this->loader->add_filter( 'removable_query_args', $plugin_admin, 'admin_removable_query_args' );
 	}
 
 	/**

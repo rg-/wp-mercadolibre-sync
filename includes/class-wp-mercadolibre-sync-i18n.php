@@ -40,6 +40,12 @@ class Wp_Mercadolibre_Sync_i18n {
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
 
+		add_action('wpbc/layout/start', function(){
+		
+			echo dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/';
+				 
+			}, 4 );
+
 	}
 
 

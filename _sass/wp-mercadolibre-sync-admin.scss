@@ -2,6 +2,20 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+
+$gutter: 1em;
+
+$primary: #3483fa;
+$secondary: #fafafa;
+$success: #28a745;
+$warning: #ffc107;
+$danger: #dc3545;
+$info: #17a2b8;
+
+$yellow: #fff159;
+
+
 .wp-mercadolibre-sync{
 		#wpcontent{ 
 		padding-left: 0; 
@@ -96,9 +110,7 @@
  	width: 100%;
  }
 
-
-
-$gutter: 1em;
+ 
 .wpmlsync__admin_container {  
     margin-right: auto;
     margin-left: auto;
