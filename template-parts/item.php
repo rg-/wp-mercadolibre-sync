@@ -1,4 +1,19 @@
-<div class="col-12 gmx-1">
+<?php
+
+// passed $item [obj]
+
+$body = $item->body;
+$id = $body->id;
+$title = $body->title;
+$permalink = $body->permalink;  
+$thumbnail = $body->thumbnail; 
+$descriptions = $body->descriptions; 
+
+$date_created = $body->date_created; 
+$last_updated = $body->last_updated; 
+
+?>
+<div class="col-12 gmy-1">
 	<div class="card">
 		<div class="card-body">
       <div class="row">
@@ -8,7 +23,12 @@
       	<div class="col-md-4 d-flex align-items-start justify-content-start">
       		<div>
         		<div class="card-text"><small class="text-muted">#<?php echo $id;?></small></div>
-        		<h5 class="card-title"><?php echo $title;?></h5> 
+        		<h5 class="card-title"><?php echo $title;?></h5>
+
+            <p>
+              <small><?php echo _e('Created','wp-mercadolibre-sync'); ?> <?php echo $date_created; ?></small><br>
+              <small><?php echo _e('Updated','wp-mercadolibre-sync'); ?> <?php echo $last_updated; ?></small>
+            </p>
 		       </div>
       	</div>
       	<div class="col-md-3 d-flex align-items-center justify-content-center">

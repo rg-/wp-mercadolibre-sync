@@ -74,12 +74,12 @@ class Wp_Mercadolibre_Sync {
 		}
 		$this->plugin_name = 'wp-mercadolibre-sync'; 
 
-		$this->load_dependencies();
+		$this->load_dependencies(); 
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks(); 
+		$this->define_public_hooks();  
 
-	}
+	} 
 
 	/**
 	 * Load the required dependencies for this plugin.
@@ -98,8 +98,20 @@ class Wp_Mercadolibre_Sync {
 	 * @access   private
 	 */
 	private function load_dependencies() {
+ 
+		/**
+		 * 3rd party Meli SDK
+		 * https://github.com/mercadolibre/php-sdk
+		 * meli-debug.php has a very, very little change to disable SSL for CURL in order to let work on localhost or test sites
+		 */
+		$use_debug_meli = true;
+		$meli_path = $use_debug_meli ? 'Meli/meli-debug.php' : 'Meli/meli.php'; 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . $meli_path;
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-mercadolibre-sync-functions.php';
+		/**
+		 * Many plugin functions 
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-mercadolibre-sync-functions.php'; 
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -122,12 +134,8 @@ class Wp_Mercadolibre_Sync {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-mercadolibre-sync-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-mercadolibre-sync-public.php'; 
 
-		$use_debug_meli = true;
-		$meli_path = $use_debug_meli ? 'Meli/meli-debug.php' : 'Meli/meli.php'; 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . $meli_path;
-		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-mercadolibre-sync-meli.php'; 
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/wp-mercadolibre-sync-shortcodes.php';
 
@@ -135,7 +143,7 @@ class Wp_Mercadolibre_Sync {
 
 		$this->loader = new Wp_Mercadolibre_Sync_Loader();
 
-	} 
+	}  
 
 
 	/**
@@ -154,6 +162,7 @@ class Wp_Mercadolibre_Sync {
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
+ 
 
 	/**
 	 * Register all of the hooks related to the admin area functionality
@@ -170,24 +179,23 @@ class Wp_Mercadolibre_Sync {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		/* 
-		#SESSION_NOT 
+		// could be usedfull do something on sessin in/out on future....
 		$this->loader->add_action( 'init', $plugin_admin, 'session_init', 1 );
 		$this->loader->add_action( 'wp_logout', $plugin_admin, 'session_end' );
 		$this->loader->add_action( 'wp_login', $plugin_admin, 'session_end');
 		$this->loader->add_action( 'end_session_action', $plugin_admin, 'session_end');
 		*/
 
+		// TODO, put some widget with status and so on on dashboard
 		// $this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup', 99 );
+		
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-		if ( is_admin() && ( ! wp_doing_ajax() ) ) {
+
+		if ( is_admin() && ( ! wp_doing_ajax() ) ) { // is this needed??
 			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init_settings', 1 );
 			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_register_settings', 2 );
 			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
-		}
-		$this->loader->add_action( 'admin_body_class', $plugin_admin, 'admin_body_class' );
-
-
-		$this->loader->add_filter( 'removable_query_args', $plugin_admin, 'admin_removable_query_args' );
+		} 
 	}
 
 	/**
@@ -203,13 +211,13 @@ class Wp_Mercadolibre_Sync {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		if ( !is_admin() && ( ! wp_doing_ajax() ) ) {
+
+		if ( !is_admin() && ( ! wp_doing_ajax() ) ) { // is this needed??
 			$this->loader->add_action( 'init', $plugin_public, 'init_settings', 1 );
-		}
-		// USED???
-		$this->loader->add_filter( 'wp_mercadolibre_sync/template/get_item', $plugin_public, 'template_get_item' ); 
+		} 
 
 	}
+ 
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.

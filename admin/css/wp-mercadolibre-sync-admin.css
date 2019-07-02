@@ -2,8 +2,27 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-.wp-mercadolibre-sync #wpcontent {
-  padding-left: 0; }
+.wp-mercadolibre-sync .color-primary {
+  color: #3483fa; }
+
+.wp-mercadolibre-sync .color-secondary {
+  color: #fafafa; }
+
+.wp-mercadolibre-sync .color-success {
+  color: #28a745; }
+
+.wp-mercadolibre-sync .color-info {
+  color: #17a2b8; }
+
+.wp-mercadolibre-sync .color-warning {
+  color: #ffc107; }
+
+.wp-mercadolibre-sync .color-danger {
+  color: #dc3545; }
+
+.wp-mercadolibre-sync .color-yellow {
+  color: #fff159; }
+
 .wp-mercadolibre-sync #poststuff {
   padding-top: 0; }
 .wp-mercadolibre-sync #post-body-content {

@@ -10,10 +10,6 @@ $meli = new Meli($appId, $secretKey);
 
 ?>
 
-<h1 class="wp-heading-inline"><?php echo __( 'WP Mercadolibre Sync', 'wp-mercadolibre-sync' ); ?> > <?php echo __( 'Debug', 'wp-mercadolibre-sync' ); ?></h1>
-<div class="clear"></div>
-<br>
-
 <form action='<?php $admin_url = admin_url('admin.php'); echo $admin_url; ?>' method='get'>
 
 <div class="wpmlsync__postbox-container">
@@ -28,8 +24,8 @@ $meli = new Meli($appId, $secretKey);
             <input type="hidden" readonly id="test_user" name="test_user" class="regular-text" value="1" >
             <input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-debug" >
 
-            <h3 class="wpmlsync__postbox-subtitle">Cerar usuario test:</h3>
-            <p>Para crear un usuario test debes usar un token desde una cuenta real. Para desarrollo y testeo es recomendable crear dos cuentas test, una para usar como vendedor, y otra para usar como comprador y así poder hacer comentarios y compras.</p>
+            <h2 class="wpmlsync__postbox-title"><?php echo __( 'Create "test" user', 'wp-mercadolibre-sync' ); ?></h2>
+            <p class="about-description"><?php echo __( 'To create a user test you must use a token from a real account. For development and testing, it is advisable to create two test accounts, one to use as a seller, and another to use as a buyer so that you can make comments and purchases.', 'wp-mercadolibre-sync' ); ?></p>
 
             <?php 
             if(isset($_GET['test_user'])){
@@ -45,7 +41,7 @@ $meli = new Meli($appId, $secretKey);
             <table class="form-table">
               <tbody>
                 <tr>
-                  <th scope="row">Ingresar un token válido</th>
+                  <th scope="row"><?php echo __( 'Enter a valid token', 'wp-mercadolibre-sync' ); ?></th>
                   <td><input type="text" class="wpmlsync__control" id="access_token" name="access_token" value="APP_USR-XXXXXXXXXXXXXX-XXXXXX-XXXXXXXXXXXXXXXXXXXXXX-XXXXXX"></td>
                 </tr>
               </tbody>
@@ -71,6 +67,10 @@ $meli = new Meli($appId, $secretKey);
 <!-- #post-body-content end -->
 
 <form action='<?php $admin_url = admin_url('admin.php'); echo $admin_url; ?>' method='get'>
+
+<input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-tests" >
+<input type="hidden" readonly id="post_test" name="post_test" class="regular-text" value="1" >
+
 <div class="wpmlsync__postbox-container">
   
   <div class="wpmlsync__postbox-inner">
@@ -80,8 +80,8 @@ $meli = new Meli($appId, $secretKey);
       <div class="wpmlsync__col w-100">
         <div class="wpmlsync__card">
 
-          <h3 class="wpmlsync__postbox-subtitle">Quick publish:</h3>
-
+          <h2 class="wpmlsync__postbox-title"><?php echo __( 'Test publications', 'wp-mercadolibre-sync' ); ?></h2>
+          <p class="about-description"><?php echo __( 'While this tool is for creating test publications, it can be used to create real publications if a real app and user is being used in the plugin settings. Take care. ', 'wp-mercadolibre-sync' ); ?></p>
           <?php
               
             if(isset($_GET['post_test'])){
@@ -90,20 +90,16 @@ $meli = new Meli($appId, $secretKey);
               );
 
               $wp_mercadolibre_sync_get_item_test = wp_mercadolibre_sync_get_item_test($_GET);
-              echo '<pre>';
-               // print_r($wp_mercadolibre_sync_get_item_test);
-              echo '</pre>'; 
 
               $response = $meli->post('/items', $wp_mercadolibre_sync_get_item_test, $params); 
-              echo "<h4>Success! Your test item was listed!</h4>";
-              echo "<p>Go to the permalink to see how it's looking in our site.</p>";
-              echo '<a target="_blank" class="" href="'.$response["body"]->permalink.'">'.$response["body"]->permalink.'</a><br />';
+              ?>
+              <p class="about-description"><?php echo __( 'Success! Your test item was listed!', 'wp-mercadolibre-sync' ); ?></p>
+              <p class="about-description"><?php echo __( "Go to the permalink to see how it's looking in our site.", 'wp-mercadolibre-sync' ); ?>: </p>
+              <p class="about-description"><a target="_blank" class="" href="<?php echo $response["body"]->permalink; ?>"><?php echo $response["body"]->permalink; ?></a></p>
+              <?php 
             }
 
-          ?>
-
-          <input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-debug" >
-          <input type="hidden" readonly id="post_test" name="post_test" class="regular-text" value="1" >
+          ?> 
 
           <table class="form-table">
             <tbody>

@@ -3,7 +3,7 @@
 function wp_mercadolibre_sync_meli_code_array(){
 	$meli_code_array = array(
 			0 => array(
-				'desc' => _x('No data set and / or saved yet.','wp-mercadolibre-sync'),
+				'desc' => __('No data set and / or saved yet.','wp-mercadolibre-sync'),
 				'html' => '',
 			),
 			1 => array(
@@ -19,23 +19,23 @@ function wp_mercadolibre_sync_meli_code_array(){
 				'html' => ''
 			),
 			4 => array(
-				'desc' => _x('Okay, the API has been authorized. The data has been saved.','wp-mercadolibre-sync'),
+				'desc' => __('Okay, the API has been authorized. The data has been saved.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 			5 => array(
-				'desc' => _x('The Token and expiration time have been refreshed. The data has been saved.','wp-mercadolibre-sync'),
+				'desc' => __('The Token and expiration time have been refreshed. The data has been saved.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 			6 => array(
-				'desc' => _x('Excellent, your API is linked correctly.','wp-mercadolibre-sync'),
+				'desc' => __('Excellent, your API is linked correctly.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 			7 => array(
-				'desc' => _x('You must authenticate your application to continue.','wp-mercadolibre-sync'),
+				'desc' => __('You must authenticate your application to continue.','wp-mercadolibre-sync'),
 				'html' => ''
 			), 
 			8 => array(
-				'desc' => _x('Your app has been authorized with a new code. Tokens and expiration time have been refreshed.','wp-mercadolibre-sync'),
+				'desc' => __('Your app has been authorized with a new code. Tokens and expiration time have been refreshed.','wp-mercadolibre-sync'),
 				'html' => ''
 			),
 		);
@@ -45,6 +45,7 @@ function wp_mercadolibre_sync_meli_code_array(){
  function wp_mercadolibre_sync_settings($name=''){
 		$options = get_option( 'wp_mercadolibre_sync_settings' );  
 		$out = array(
+			
 			'appId' => $options['wp_mercadolibre_sync_appId'],
 			'secretKey' => $options['wp_mercadolibre_sync_secretKey'],
 			'redirectURI' => $options['wp_mercadolibre_sync_redirectURI'],
@@ -164,4 +165,33 @@ function wp_mercadolibre_sync_get_item_test($get_params){
   }
   //$item['title'] = isset($get_params[$prefix.'title']) ? $get_params[$prefix.'title'] : $item['title'];
 	return $item; 
+}
+
+function wp_mercadolibre_sync_get_template($template='',$part=''){ 
+	//$template = ''; 
+	if( file_exists( get_template_directory() . '/wpsyncml-template/'.$template.'-'.$part.'.php' )){
+		
+		$template = get_template_directory() . '/wpsyncml-template/'.$template.'-'.$part.'.php';
+	
+	}else if(file_exists( get_template_directory() . '/wpsyncml-template/'.$template.'.php' )){
+	
+		$template = get_template_directory() . '/wpsyncml-template/'.$template.'.php'; 
+	
+	}else{
+
+		if( file_exists( plugin_dir_path( dirname( __FILE__ ) ) . 'template-parts/'.$template.'-'.$part.'.php' )){
+
+			$template = plugin_dir_path( dirname( __FILE__ ) ) . 'template-parts/'.$template.'-'.$part.'.php'; 
+
+		}else if( file_exists( plugin_dir_path( dirname( __FILE__ ) ) . 'template-parts/'.$template.'.php' )){
+
+			$template = plugin_dir_path( dirname( __FILE__ ) ) . 'template-parts/'.$template.'.php'; 
+
+		} 
+
+	}
+	 
+	if($template != ''){
+		return $template;
+	} 
 }

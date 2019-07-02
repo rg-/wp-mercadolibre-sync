@@ -32,7 +32,6 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
 }
 
 ?>
-
 <div class="wpmlsync__postbox-container">
   
   <div class="wpmlsync__postbox-inner">
@@ -46,33 +45,35 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
 
             if( $api_status_ok ){
               ?>
-              <p><span class="dashicons dashicons-yes"></span> <?php _e('Connected API','wp-mercadolibre-sync'); ?></p>
+              <p><span class="dashicons dashicons-yes color-success"></span> <?php _e('Connected API','wp-mercadolibre-sync'); ?></p>
               <?php
               if(!empty($auto_token)){
-                echo '<p><span class="dashicons dashicons-yes"></span> auto_token ON</p>';
+                echo '<p><span class="dashicons dashicons-yes color-success"></span> auto_token ON</p>';
               }else{
-                echo '<p><span class="dashicons dashicons-warning"></span> auto_token OFF</p>';
+                echo '<p><span class="dashicons dashicons-warning color-danger"></span> auto_token OFF</p>';
+              } 
+
+              $curl_settings = get_option( 'wp_mercadolibre_sync_curl_settings' );
+              if(!empty($curl_settings['curl_ssl'])){
+                echo '<p><span class="dashicons dashicons-yes"></span> SSL_VERIFYPEER ON</p>';
+              }else{
+                echo '<p><span class="dashicons dashicons-warning color-danger"></span> SSL_VERIFYPEER OFF</p>';
               }
 
-                $current = new DateTime(date('Y-m-d H:i:s', time()));//start time
-                $expiration = new DateTime(date('Y-m-d H:i:s', $expires_in));//end time
-                $interval = $current->diff($expiration);
-                // %Y years %m months %d days %H hours %i minutes %s seconds
-                ?>
-                <ul class="wpmlsync_ul">
-                  <li><b><?php _e('Token life','wp-mercadolibre-sync'); ?></b></li>
-                  <li><?php echo $interval->format('%H hours %i minutes %s seconds'); ?></li>
-                  <li><?php _e('Expires in (UTC)','wp-mercadolibre-sync'); ?> <small><?php echo date('Y-m-d H:i:s', $expires_in); ?></small></li>
-                </ul>
-                <?php
+              if(!empty($debug)){
+                echo '<p><span class="dashicons dashicons-warning color-warning"></span> debug ON</p>';
+              }else{
+                echo '<p><span class="dashicons dashicons-yes color-success"></span> debug OFF</p>';
+              }
+
             }else{
               if( $api_status==7 ) {
                   ?>
-                  <p><span class="dashicons dashicons-warning"></span> <?php _e('Authenticate the application','wp-mercadolibre-sync'); ?></p>
+                  <p><span class="dashicons dashicons-warning color-warning"></span> <?php _e('Authenticate the application','wp-mercadolibre-sync'); ?></p>
                   <?php
                 }else{
                    ?>
-                  <p><span class="dashicons dashicons-warning"></span> <?php _e('No data set','wp-mercadolibre-sync'); ?></p>
+                  <p><span class="dashicons dashicons-warning color-danger"></span> <?php _e('No data set','wp-mercadolibre-sync'); ?></p>
                   <?php
                 } 
             }
@@ -87,7 +88,7 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
             <?php 
               if( $api_status_ok ){
                 ?>
-                <p><span class="dashicons dashicons-yes"></span> <?php _e('Connected','wp-mercadolibre-sync'); ?></p>
+                <p><span class="dashicons dashicons-yes color-primary"></span> <?php _e('Connected','wp-mercadolibre-sync'); ?></p>
                 <ul class="wpmlsync_ul"> 
                      
                     <?php
@@ -103,9 +104,20 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
                     <li>App name: <a href="<?php echo $url; ?>" target="_blank"><b><?php echo $name; ?></b></a></li>
                 </ul> 
                 <?php
+                $current = new DateTime(date('Y-m-d H:i:s', time()));//start time
+                $expiration = new DateTime(date('Y-m-d H:i:s', $expires_in));//end time
+                $interval = $current->diff($expiration);
+                // %Y years %m months %d days %H hours %i minutes %s seconds
+                ?> 
+                <ul class="wpmlsync_ul">
+                  <li><b><?php _e('Token life','wp-mercadolibre-sync'); ?></b></li>
+                  <li><?php echo $interval->format('%H hours %i minutes %s seconds'); ?></li>
+                  <li><?php _e('Expires in (UTC)','wp-mercadolibre-sync'); ?> <small><?php echo date('Y-m-d H:i:s', $expires_in); ?></small></li>
+                </ul>
+                <?php
               }else{ 
                 ?>
-                <p><span class="dashicons dashicons-warning"></span> <?php _e('There are no linked applications','wp-mercadolibre-sync'); ?></p>
+                <p><span class="dashicons dashicons-warning color-danger"></span> <?php _e('There are no linked applications','wp-mercadolibre-sync'); ?></p>
                 <?php
               }
             ?>
@@ -119,7 +131,7 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
             <?php 
               if( $api_status_ok ){
                 ?>
-                <p><span class="dashicons dashicons-yes"></span> <?php _e('Authorized','wp-mercadolibre-sync'); ?></p>
+                <p><span class="dashicons dashicons-yes color-primary"></span> <?php _e('Authorized','wp-mercadolibre-sync'); ?></p>
                 <ul class="wpmlsync_ul"> 
                      
                     <?php
@@ -137,7 +149,7 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
                 <?php
               }else{ 
                 ?>
-                <p><span class="dashicons dashicons-warning"></span> <?php _e('There are no authorized users','wp-mercadolibre-sync'); ?></p>
+                <p><span class="dashicons dashicons-warning color-danger"></span> <?php _e('There are no authorized users','wp-mercadolibre-sync'); ?></p>
                 <?php
               }
             ?>
@@ -151,7 +163,7 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
     <div class="wpmlsync__row">
       <div class="wpmlsync__col w-100 wpmlsync__col_buttons">
       
-      <?php echo '<p>'.$meli_code_array[$api_status]['desc'].'</p>';?>  
+      <?php echo '<p>'.$meli_code_array[$api_status]['desc'].'</p>'; ?>  
 
       <?php  
 
@@ -177,52 +189,3 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
 
 <div class="clear"></div>
 <!-- #post-body-content end -->
-
-<!-- The settings fields form -->
-<form action='options.php' method='post'>
-
-  <?php
-  settings_fields( 'wp_mercadolibre_sync_api' );
-  ?>
-  
-  <div class="wpmlsync__postbox-container">
-    <div class="wpmlsync__postbox-inner">
-      <div class="wpmlsync__card">
-        <?php
-        do_settings_sections( 'wp-mercadolibre-sync' );
-        ?>
-      </div>
-    </div>
-  </div>
-
-  <div class="wpmlsync__postbox-container">
-    <div class="wpmlsync__postbox-inner">
-      <div class="wpmlsync__card">
-        <?php
-          do_settings_sections( 'wp-mercadolibre-sync-private' ); 
-          ?>
-      </div>
-    </div>
-  </div>
-
-  <div id="wpmlsync__advanced" class="wpmlsync__postbox-container">
-    <div class="wpmlsync__postbox-inner">
-      <div class="wpmlsync__card">
-        <?php
-        do_settings_sections( 'wp-mercadolibre-sync-advanced' ); 
-        ?>
-      </div>
-    </div>
-  </div>
-
-  <div class="wpmlsync__postbox-container">
-    <div class="wpmlsync__postbox-inner">
-      <div class="wpmlsync__col w-100 wpmlsync__col_buttons">
-        <?php 
-        submit_button( __('Save Changes','wp-mercadolibre-sync'), 'button button-primary wpmlsync__button', 'submit', false ); 
-        ?>
-      </div>
-    </div>
-  </div>
-
-</form>

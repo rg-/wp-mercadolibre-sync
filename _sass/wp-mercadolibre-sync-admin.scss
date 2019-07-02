@@ -15,10 +15,29 @@ $info: #17a2b8;
 
 $yellow: #fff159;
 
+$colors: ();
+$colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+   	"yellow":     $yellow
+  ),
+  $colors
+);
+
+@each $color, $value in $colors{
+	.wp-mercadolibre-sync .color-#{$color}{
+		color:$value;
+	}
+}
 
 .wp-mercadolibre-sync{
-		#wpcontent{ 
-		padding-left: 0; 
+
+	#wpcontent{  
 	}
 	#poststuff{ 
 		padding-top: 0; 
