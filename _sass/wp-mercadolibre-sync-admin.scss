@@ -128,6 +128,15 @@ $colors: map-merge(
  	box-shadow: none!important;
  	width: 100%;
  }
+ select.wpmlsync__control{
+ 	
+ 	    
+  @media screen and (min-width: 781px){
+		padding-left:1em!important;
+		padding-right:1em!important;
+		height: 49px;
+  }
+ }
 
  
 .wpmlsync__admin_container {  

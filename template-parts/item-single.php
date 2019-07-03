@@ -28,7 +28,10 @@ $thumbnail = $body->thumbnail;
 $pictures = $body->pictures; // array
 $video_id = $body->video_id; // youtube
 $descriptions = $body->descriptions; 
+
+$category_id = $body->category_id;  
 ?>
+
 <div class="container">
 	<div class="card border-0">
 		<div class="card-body">
@@ -40,6 +43,9 @@ $descriptions = $body->descriptions;
       		<div>
         		<div class="card-text"><small class="text-muted">#<?php echo $id;?></small></div>
         		<h1 class="card-title"><?php echo $title;?></h1> 
+            <p><?php echo _e('Category','wp-mercadolibre-sync'); ?><?php 
+            echo do_shortcode('[WPMLSYNC_get_categories category_id='.$category_id.' /]'); 
+            ?></p> 
 		       </div>
 		       <div>
         		<p class="gmb-0"><?php echo _e('Price','wp-mercadolibre-sync'); ?> <?php echo $body->currency_id; ?> <?php echo $body->price; ?></p>

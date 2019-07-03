@@ -9,8 +9,18 @@ $permalink = $body->permalink;
 $thumbnail = $body->thumbnail; 
 $descriptions = $body->descriptions; 
 
+$category_id = $body->descriptions; // de aca saco la info de la categoria con otro get()
+$attributes = $body->descriptions; // array
+
 $date_created = $body->date_created; 
 $last_updated = $body->last_updated; 
+
+
+
+
+
+
+
 
 ?>
 <div class="col-12 gmy-1">
@@ -24,7 +34,7 @@ $last_updated = $body->last_updated;
       		<div>
         		<div class="card-text"><small class="text-muted">#<?php echo $id;?></small></div>
         		<h5 class="card-title"><?php echo $title;?></h5>
-
+            
             <p>
               <small><?php echo _e('Created','wp-mercadolibre-sync'); ?> <?php echo $date_created; ?></small><br>
               <small><?php echo _e('Updated','wp-mercadolibre-sync'); ?> <?php echo $last_updated; ?></small>

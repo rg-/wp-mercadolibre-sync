@@ -58,6 +58,16 @@ class Wp_Mercadolibre_Sync {
 	protected $version;
 
 	/**
+	 * The DB version of this plugin.
+	 *
+	 * @since    1.0.1
+	 * @access   private
+	 * @var      string    $db_version    The DB version of this plugin.
+	 */
+	protected $db_version;
+
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -72,15 +82,20 @@ class Wp_Mercadolibre_Sync {
 		} else {
 			$this->version = '1.0.0';
 		}
+		if ( defined( 'WP_MERCADOLIBRE_SYNC_DB_VERSION' ) ) {
+			$this->db_version = WP_MERCADOLIBRE_SYNC_DB_VERSION;
+		} else {
+			$this->db_version = '1.0';
+		}
 		$this->plugin_name = 'wp-mercadolibre-sync'; 
 
 		$this->load_dependencies(); 
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();  
-
+		$this->load_modules(); 
 	} 
-
+	
 	/**
 	 * Load the required dependencies for this plugin.
 	 *
@@ -104,8 +119,8 @@ class Wp_Mercadolibre_Sync {
 		 * https://github.com/mercadolibre/php-sdk
 		 * meli-debug.php has a very, very little change to disable SSL for CURL in order to let work on localhost or test sites
 		 */
-		$use_debug_meli = true;
-		$meli_path = $use_debug_meli ? 'Meli/meli-debug.php' : 'Meli/meli.php'; 
+		$use_debug_meli = get_option( 'wp_mercadolibre_sync_curl_settings');
+		$meli_path = empty($use_debug_meli['curl_ssl']) ? 'Meli/meli-debug.php' : 'Meli/meli.php'; 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . $meli_path;
 
 		/**
@@ -134,17 +149,18 @@ class Wp_Mercadolibre_Sync {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-mercadolibre-sync-public.php'; 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-mercadolibre-sync-public.php';  
 
-
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'shortcodes/wp-mercadolibre-sync-shortcodes.php';
-
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'ajax/wp-mercadolibre-sync-ajax.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'ajax/wp-mercadolibre-sync-ajax.php'; 
 
 		$this->loader = new Wp_Mercadolibre_Sync_Loader();
 
 	}  
 
+
+	private function load_modules() { 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/wp-mercadolibre-sync-shortcodes.php';
+	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
@@ -190,12 +206,19 @@ class Wp_Mercadolibre_Sync {
 		// $this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup', 99 );
 		
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
+		
 
 		if ( is_admin() && ( ! wp_doing_ajax() ) ) { // is this needed??
 			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init_settings', 1 );
 			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_register_settings', 2 );
+
 			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
-		} 
+		}
+
+
+		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links' );
+
+
 	}
 
 	/**
@@ -257,6 +280,16 @@ class Wp_Mercadolibre_Sync {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	/**
+	 * Retrieve the version number of the fb plugin.
+	 *
+	 * @since     1.0.1
+	 * @return    string    The version number of the db plugin.
+	 */
+	public function get_db_version() {
+		return $this->db_version;
 	}
 
 }

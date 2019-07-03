@@ -55,7 +55,7 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
 
               $curl_settings = get_option( 'wp_mercadolibre_sync_curl_settings' );
               if(!empty($curl_settings['curl_ssl'])){
-                echo '<p><span class="dashicons dashicons-yes"></span> SSL_VERIFYPEER ON</p>';
+                echo '<p><span class="dashicons dashicons-yes color-success"></span> SSL_VERIFYPEER ON</p>';
               }else{
                 echo '<p><span class="dashicons dashicons-warning color-danger"></span> SSL_VERIFYPEER OFF</p>';
               }

@@ -30,12 +30,17 @@ class Wp_Mercadolibre_Sync_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+		
 		delete_option( 'wp_mercadolibre_sync_curl_settings' );
 		delete_option( 'wp_mercadolibre_sync_refresh_public_count' );
 		delete_option( 'wp_mercadolibre_sync_refresh_admin_count' );
 		delete_option( 'wp_mercadolibre_sync_settings' );
 		delete_option( 'wp_mercadolibre_sync_status' );
+		
+		// Could be usefull on future
 		// wp_clear_scheduled_hook( 'Wp_Mercadolibre_Sync_Cron' );
+
+		
 	}
 
 }

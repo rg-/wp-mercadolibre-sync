@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The plugin bootstrap file
+ * WP Mercado Libre Sync Plugin
  *
  * @link              https://github.com/rg-
  * @since             1.0.0
@@ -28,12 +28,11 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Start at version 1.0.0 and using SemVer - https://semver.org
+ * Will be renamed as release new versions.
  */
-define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.1' );
-
-
+define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.1' ); 
+define( 'WP_MERCADOLIBRE_SYNC_DB_VERSION', '1.0' ); 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wp-mercadolibre-sync-activator.php

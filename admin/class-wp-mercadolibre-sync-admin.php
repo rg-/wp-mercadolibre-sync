@@ -151,6 +151,18 @@ class Wp_Mercadolibre_Sync_Admin {
 	}
 
 	/**
+	 * Set the admin filters, try to put all filters here.
+	 *
+	 * @since    1.0.1
+	 */
+	public function plugin_action_links($links){
+		$mylinks = array(
+		 '<a href="' . admin_url( 'options-general.php?page='.$this->plugin_name ) . '">'. __('Settings','wp-mercadolibre-sync') .'</a>',
+		 );
+		return array_merge( $links, $mylinks );
+	}
+
+	/**
 	 * Set the admin noticies depending on, mosty, the API status reported.
 	 *
 	 * @since    1.0.0
@@ -331,10 +343,33 @@ class Wp_Mercadolibre_Sync_Admin {
 				$field, 
 				function() use ( $field ) {
 					$options = get_option( 'wp_mercadolibre_sync_settings' );
-					$value = isset($options['wp_mercadolibre_sync_'.$field]) ? $options['wp_mercadolibre_sync_'.$field] : '';
-					?>
-					<input required type='text' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]' value='<?php echo $value; ?>' class='wpmlsync__control'>
-					<?php 
+					$value = isset($options['wp_mercadolibre_sync_'.$field]) ? $options['wp_mercadolibre_sync_'.$field] : ''; 
+ 
+					if($field=='siteId'){ 
+						$meli = new Meli('','');
+						$sites = $meli->get('/sites');
+						if( isset($sites['httpCode']) == 200 ) {
+							?>
+							<select class='wpmlsync__control' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]'>
+								<option value=0>Seleccionar País</option>
+								<?php
+								foreach ($sites['body'] as $site) { 
+									if($value==$site->id){
+										$selected = "selected";
+									}else{
+										$selected = "";
+									}
+									?><option value='<?php echo $site->id; ?>' <?php echo $selected; ?>><?php echo $site->name; ?></option><?php
+								}
+								?>
+							</select>
+							<?php
+						} 
+					}else{
+						?>
+						<input required type='text' name='wp_mercadolibre_sync_settings[wp_mercadolibre_sync_<?php echo $field; ?>]' value='<?php echo $value; ?>' class='wpmlsync__control'>
+						<?php
+					}
 				} , 
 				$this->plugin_name, 
 				'wp_mercadolibre_sync_settings_section' 
@@ -425,12 +460,8 @@ class Wp_Mercadolibre_Sync_Admin {
 			'curl_ssl',
 			'SSL_VERIFYPEER',
 			function() { 
-				  $options = get_option( 'wp_mercadolibre_sync_curl_settings' ); 
-					if(empty($options)){
-						$checked = 'checked';
-					}else{
-						$checked = isset($options['curl_ssl']) ? 'checked' : ''; 
-					}
+				  $options = get_option( 'wp_mercadolibre_sync_curl_settings', true ); 
+					$checked = isset($options['curl_ssl']) ? 'checked' : ''; 
 					?>
 					<label class="wpmlsync__label_control"><input type='checkbox' name='wp_mercadolibre_sync_curl_settings[curl_ssl]' <?php echo $checked; ?> class='wpmlsync__checkbox'><span class=""><?php echo _e('Use SSL_VERIFYPEER?','wp-mercadolibre-sync'); ?> </span></label>
 					<p><?php echo _e('If using localhost or no SSL actived, you can disable this for testings.','wp-mercadolibre-sync'); ?></p>

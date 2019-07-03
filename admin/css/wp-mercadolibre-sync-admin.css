@@ -95,6 +95,12 @@
   box-shadow: none !important;
   width: 100%; }
 
+@media screen and (min-width: 781px) {
+  select.wpmlsync__control {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+    height: 49px; } }
+
 .wpmlsync__admin_container {
   margin-right: auto;
   margin-left: auto; }

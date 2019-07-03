@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-mercadolibre-sync\n"
-"POT-Creation-Date: 2019-07-01 17:44-0300\n"
-"PO-Revision-Date: 2019-07-01 20:11-0300\n"
+"POT-Creation-Date: 2019-07-01 22:59-0300\n"
+"PO-Revision-Date: 2019-07-02 00:20-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,44 +15,44 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:97
-#: ../admin/class-wp-mercadolibre-sync-admin.php:98
+#: ../admin/class-wp-mercadolibre-sync-admin.php:88
+#: ../admin/class-wp-mercadolibre-sync-admin.php:89
 msgid "Mercadolibre Sync"
 msgstr "Mercadolibre Sync"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:108
-#: ../admin/class-wp-mercadolibre-sync-admin.php:109
-#: ../admin/class-wp-mercadolibre-sync-admin.php:509
+#: ../admin/class-wp-mercadolibre-sync-admin.php:99
+#: ../admin/class-wp-mercadolibre-sync-admin.php:100
+#: ../admin/class-wp-mercadolibre-sync-admin.php:506
 msgid "Modules"
 msgstr "Módulos"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:117
-#: ../admin/class-wp-mercadolibre-sync-admin.php:118
-#: ../admin/class-wp-mercadolibre-sync-admin.php:496
+#: ../admin/class-wp-mercadolibre-sync-admin.php:108
+#: ../admin/class-wp-mercadolibre-sync-admin.php:109
+#: ../admin/class-wp-mercadolibre-sync-admin.php:493
 msgid "Tests"
 msgstr "Testeos"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:168
+#: ../admin/class-wp-mercadolibre-sync-admin.php:169
 msgid "Token refreshed!!"
 msgstr "Token refrescado !!"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:175
+#: ../admin/class-wp-mercadolibre-sync-admin.php:176
 msgid "Re-autorized API. Token refreshed!!"
 msgstr "API autorizada de nuevo. Token refrescado !!"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:182
+#: ../admin/class-wp-mercadolibre-sync-admin.php:183
 msgid "Perfect!! Plugin configured correctly."
 msgstr "¡¡Perfecto!! Plugin configurado correctamente."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:189
+#: ../admin/class-wp-mercadolibre-sync-admin.php:190
 msgid "Plugin needs more settings."
 msgstr "El plugin necesita más configuraciones."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:396
+#: ../admin/class-wp-mercadolibre-sync-admin.php:397
 msgid "Enable Auto Token?"
 msgstr "¿Habilitar token automático?"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:397
+#: ../admin/class-wp-mercadolibre-sync-admin.php:398
 msgid ""
 "Tokens exprie each 6 hours, enable this option to refresh it automaticly "
 "when needed."
@@ -60,11 +60,11 @@ msgstr ""
 "Los tokens caducan cada 6 horas, habilite esta opción para actualizarla "
 "automáticamente cuando sea necesario."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:415
+#: ../admin/class-wp-mercadolibre-sync-admin.php:416
 msgid "Enable Debug?"
 msgstr "¿Habilitar Depuración?"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:416
+#: ../admin/class-wp-mercadolibre-sync-admin.php:417
 msgid ""
 "A file will be created/updated at: wp-content/wp-mercadolibre-sync-debug.txt "
 "with debug information."
@@ -72,29 +72,29 @@ msgstr ""
 "Se creará/actualizará un archivo en: wp-content/wp-mercadolibre-sync-debug."
 "txt con información de depuración."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:434
+#: ../admin/class-wp-mercadolibre-sync-admin.php:431
 msgid "Use SSL_VERIFYPEER?"
 msgstr "¿Usar SSL_VERIFYPEER?"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:435
+#: ../admin/class-wp-mercadolibre-sync-admin.php:432
 msgid ""
-"Use If using localhost or no SSL actived, you can disable this for testings."
+"If using localhost or no SSL actived, you can disable this for testings."
 msgstr ""
 "Si usa localhost o no está activado SSL, puede deshabilitarlo para las "
 "pruebas."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:482
-#: ../admin/class-wp-mercadolibre-sync-admin.php:496
-#: ../admin/class-wp-mercadolibre-sync-admin.php:509
+#: ../admin/class-wp-mercadolibre-sync-admin.php:479
+#: ../admin/class-wp-mercadolibre-sync-admin.php:493
+#: ../admin/class-wp-mercadolibre-sync-admin.php:506
 #: ../admin/partials/_wp-mercadolibre-sync-admin-display.php:20
 msgid "WP Mercadolibre Sync"
 msgstr "WP Mercadolibre Sync"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:522
+#: ../admin/class-wp-mercadolibre-sync-admin.php:519
 msgid "Advanced Settings"
 msgstr "Ajustes avanzados"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:523
+#: ../admin/class-wp-mercadolibre-sync-admin.php:520
 msgid ""
 "We recommend using these options only for development. The option to "
 "activate Auto Token should always be active on production sites."
@@ -103,11 +103,11 @@ msgstr ""
 "activar el token automático siempre debe estar activa en los sitios de "
 "producción."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:535
+#: ../admin/class-wp-mercadolibre-sync-admin.php:532
 msgid "oAuth Data"
 msgstr "Datos oAuth"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:536
+#: ../admin/class-wp-mercadolibre-sync-admin.php:533
 msgid ""
 "These data are private, can be used to interact with the API. See the "
 "Mercado Libre API documentation for more information."
@@ -116,15 +116,15 @@ msgstr ""
 "Consulte la documentación de la API de Mercado Libre para obtener más "
 "información."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:537
+#: ../admin/class-wp-mercadolibre-sync-admin.php:534
 msgid "Never share this data."
 msgstr "Nunca comparta estos datos."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:549
+#: ../admin/class-wp-mercadolibre-sync-admin.php:546
 msgid "API Settings"
 msgstr "Configuraciones API"
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:550
+#: ../admin/class-wp-mercadolibre-sync-admin.php:547
 msgid ""
 "These data must be exactly the same as those set in the Application created "
 "in Mercado Libre previously. "
@@ -132,7 +132,7 @@ msgstr ""
 "Estos datos deben ser exactamente los mismos que los establecidos en la "
 "Aplicación creada anteriormente en Mercado Libre."
 
-#: ../admin/class-wp-mercadolibre-sync-admin.php:551
+#: ../admin/class-wp-mercadolibre-sync-admin.php:548
 msgid "refers to the country of the user used for the application."
 msgstr "se refiere al país del usuario utilizado para la aplicación."
 
@@ -140,68 +140,68 @@ msgstr "se refiere al país del usuario utilizado para la aplicación."
 msgid "Save Changes"
 msgstr "Guardar cambios"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:44
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:43
 msgid "System status"
 msgstr "Estado del sistema"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:49
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:48
 msgid "Connected API"
 msgstr "API conectada"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:73
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:72
 msgid "Authenticate the application"
 msgstr "Autenticar la aplicación"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:77
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:76
 msgid "No data set"
 msgstr "No hay datos"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:88
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:87
 msgid "Application"
 msgstr "Aplicación"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:92
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:91
 msgid "Connected"
 msgstr "Conectada"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:114
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:113
 msgid "Token life"
 msgstr "Vida del Token"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:116
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:115
 msgid "Expires in (UTC)"
 msgstr "Expira en (UTC)"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:121
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:120
 msgid "There are no linked applications"
 msgstr "No hay aplicaciones vinculadas."
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:131
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:130
 msgid "User"
 msgstr "Usuario"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:135
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:134
 msgid "Authorized"
 msgstr "Autorizada"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:153
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:152
 msgid "There are no authorized users"
 msgstr "No hay usuarios autorizados."
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:172
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:180
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:171
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:179
 msgid "Manage your Mercado Libre Applications"
 msgstr "Gestiona tus aplicaciones de Mercado Libre"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:174
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:173
 msgid "Authorize API"
 msgstr "Autorizar API"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:176
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:175
 msgid "Refresh API Authorization"
 msgstr "Actualizar la autorización de la API"
 
-#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:179
+#: ../admin/partials/wp-mercadolibre-sync-admin-display.php:178
 msgid "Manual refresh Token"
 msgstr "Actualizar Token manual"
 
