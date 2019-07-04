@@ -151,15 +151,21 @@ class Wp_Mercadolibre_Sync_Admin {
 	}
 
 	/**
-	 * Set the admin filters, try to put all filters here.
+	 * Fillter plugin action links on admin plugins page.
 	 *
 	 * @since    1.0.1
 	 */
-	public function plugin_action_links($links){
-		$mylinks = array(
-		 '<a href="' . admin_url( 'options-general.php?page='.$this->plugin_name ) . '">'. __('Settings','wp-mercadolibre-sync') .'</a>',
-		 );
-		return array_merge( $links, $mylinks );
+	public function plugin_action_links( $actions, $plugin_file ){ 
+
+		static $plugin;
+
+		if (!isset($plugin))
+			$plugin = WP_PLUGIN_PATH;
+			if ($plugin == $plugin_file) { 
+				$settings = array('settings' => '<a href="options-general.php?page='.$this->plugin_name.'">' . __('Settings', 'wp-mercadolibre-sync') . '</a>');  
+	    		$actions = array_merge($settings, $actions);  
+			} 
+		return $actions;
 	}
 
 	/**

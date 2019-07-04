@@ -158,7 +158,8 @@ class Wp_Mercadolibre_Sync {
 	}  
 
 
-	private function load_modules() { 
+	private function load_modules() {
+		
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/wp-mercadolibre-sync-shortcodes.php';
 	}
 
@@ -215,8 +216,8 @@ class Wp_Mercadolibre_Sync {
 			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
 		}
 
-
-		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links' );
+		// add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 )
+		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
 
 
 	}

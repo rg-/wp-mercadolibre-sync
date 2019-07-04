@@ -33,6 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.1' ); 
 define( 'WP_MERCADOLIBRE_SYNC_DB_VERSION', '1.0' ); 
+define( 'WP_PLUGIN_PATH', plugin_basename(__FILE__) );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wp-mercadolibre-sync-activator.php
@@ -58,8 +59,7 @@ register_deactivation_hook( __FILE__, 'deactivate_wp_mercadolibre_sync' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-wp-mercadolibre-sync.php';
-
+require plugin_dir_path( __FILE__ ) . 'includes/class-wp-mercadolibre-sync.php'; 
 /**
  * Begins execution of the plugin.
  *
@@ -69,10 +69,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-mercadolibre-sync.php';
  *
  * @since    1.0.0
  */
-function run_wp_mercadolibre_sync() {
-
+function run_wp_mercadolibre_sync() { 
 	$plugin = new Wp_Mercadolibre_Sync();
 	$plugin->run();
-
+ 
 }
-run_wp_mercadolibre_sync();
+run_wp_mercadolibre_sync(); 
