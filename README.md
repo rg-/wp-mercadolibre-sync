@@ -1,5 +1,5 @@
 # Wordpress Mercado Libre Sync
-
+~Current Version:1.0.2~
 
 ```
 Connect your website with the Mercado Libre API.
