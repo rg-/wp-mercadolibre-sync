@@ -124,6 +124,11 @@ class Wp_Mercadolibre_Sync {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . $meli_path;
 
 		/**
+		 * Updater class
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-mercadolibre-sync-updater.php';
+
+		/**
 		 * Many plugin functions 
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-mercadolibre-sync-functions.php'; 
@@ -159,7 +164,7 @@ class Wp_Mercadolibre_Sync {
 
 
 	private function load_modules() {
-		
+
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/wp-mercadolibre-sync-shortcodes.php';
 	}
 

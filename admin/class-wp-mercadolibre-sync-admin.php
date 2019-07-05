@@ -81,8 +81,14 @@ class Wp_Mercadolibre_Sync_Admin {
 		} );
 	}  
 
-	// Adding the admin menu items
+	/**
+	 * Adding the admin menu pages 
+	 */
+
 	public function admin_menu() {
+
+		require_once plugin_dir_path( __FILE__ ) . 'partials/class-add_action-admin_menu.php'; 
+
 		$pages = array(); 
 		$pages[] = add_menu_page(
         __( 'Mercadolibre Sync', 'wp-mercadolibre-sync' ),
@@ -112,10 +118,12 @@ class Wp_Mercadolibre_Sync_Admin {
     	array( $this, 'wp_mercadolibre_sync_tests_page' )
     );
 		
-
+    // Do something on load-[PAGE]
     foreach($pages as $page){
 	    add_action( 'load-' . $page, function( ){  
+	    	// add admin body class
 	    	add_filter('admin_body_class', array($this, 'admin_body_class') ); 
+	    	// remove query args when save or similar
 	    	add_filter('removable_query_args', array($this, 'admin_removable_query_args') ); 
 	    });
 
