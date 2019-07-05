@@ -11,7 +11,7 @@
  * Plugin Name:       WP Mercadolibre Sync
  * Plugin URI:        https://github.com/rg-/wp-mercadolibre-sync
  * Description:       Wordpress & Mercadolibre syncronization using APIs.
- * Version:           1.0.1
+ * Version:           1.0.3
  * Author:            Roberto García
  * Author URI:        https://github.com/rg-
  * License:           GPL-2.0+
@@ -29,9 +29,9 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and using SemVer - https://semver.org
- * Will be renamed as release new versions.
+ * Will be renamed as release new versions on README.md too
  */
-define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.2' ); 
+define( 'WP_MERCADOLIBRE_SYNC_VERSION', '1.0.3' ); 
 define( 'WP_MERCADOLIBRE_SYNC_DB_VERSION', '1.0' ); 
 define( 'WP_PLUGIN_PATH', plugin_basename(__FILE__) );
 /**
