@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 			ajax_loop(false); 
 		});
 	}
-	do_ajax(true);
+	// do_ajax(true);
 
 	function ajax_loop(first){
 		if(first){
@@ -23,3 +23,27 @@ jQuery(document).ready(function($) {
 
 	}
 });
+
+
+(function( $ ) {
+	'use strict';
+
+	/** 
+	 *
+	 * This enables you to define handlers, for when the DOM is ready:
+	 *
+	 * $(function() {
+	 *
+	 * });
+	 *
+	 * When the window is loaded:
+	 *
+	 * $( window ).load(function() {
+	 *
+	 * }); 
+	 */
+ 
+  $(function() {   
+	 });
+
+})( jQuery );

@@ -32,8 +32,12 @@ class Wp_Mercadolibre_Sync_Ajax {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;  
-  
+  	$this->init();
 	} 
+
+	public function init(){
+
+	}
 
 	public function Wp_Mercadolibre_Sync_Ajax_Script(){
 
@@ -55,31 +59,14 @@ class Wp_Mercadolibre_Sync_Ajax {
 		$api_status = wp_mercadolibre_sync_get_api_status();
 		$wp_mercadolibre_sync_settings = wp_mercadolibre_sync_settings();
 		// extract varis like $appId, $secretKey, $access_token, $expires_in, $refresh_token
-		extract($wp_mercadolibre_sync_settings);  
-		$allowed = true;
-		if( $allowed ){
-
-			$meli = new Meli($appId, $secretKey);
-			$params = array(
-					// 'limit' => 1, // limit items on query
-					'status' => 'active', // pending, not_yet_active, programmed, active, paused, closed
-			  	'access_token' => $access_token
-			  );
-			$url = '/users/'.$seller_id.'/items/search/';  
-			$items = $meli->get($url, $params);
-			$items_ids = $items['body']->results;
-			// $json_items = json_encode($items);
-		?>
-		<pre class="wpmlsync_ul">
-      <?php print_r($items_ids); ?>
-    </pre>
-		<?php
+		if( isset($_GET['new_product']) ){
+			include dirname( __FILE__ ). '/partials/new_product.php';
 		}
 		// allways die at last !
 		wp_die();
 	}
 
-	public  function Wp_Mercadolibre_Sync_Ajax_Shortcode( $atts, $content = "" ) {   
+	public function Wp_Mercadolibre_Sync_Ajax_Shortcode( $atts, $content = "" ) {   
 		$out = ''; 
 		ob_start();
 				echo "<div id='mlsync_ajax_result'></div>";

@@ -174,9 +174,12 @@ if($api_status==6 || $api_status==4 || $api_status==5  || $api_status==8 ){
           if($api_status==4 || $api_status==6){
             $oAuth_button_text = __('Refresh API Authorization','wp-mercadolibre-sync');
           } 
+          
           echo '<a class="button button-primary wpmlsync__button" href="' . $MELI->getAuthUrl($redirectURI, Meli::$AUTH_URL[$siteId]) . '"><span class="dashicons dashicons-shield-alt"></span> '.$oAuth_button_text.'</a>';  
-          echo '<a class="button button-secondary wpmlsync__button" href="' . $redirectURI . '&refresh_token=1"><span class="dashicons dashicons-update-alt"></span> '.__('Manual refresh Token','wp-mercadolibre-sync').'</a>'; 
-          echo '<a class="button button-secondary wpmlsync__button" href="https://applications.mercadolibre.com/" target="_blank">'.__('Manage your Mercado Libre Applications','wp-mercadolibre-sync').'</a>';
+         
+          echo '<a class="button wpmlsync__button" href="' . $redirectURI . '&refresh_token=1"><span class="dashicons dashicons-update-alt"></span> '.__('Manual refresh Token','wp-mercadolibre-sync').'</a>'; 
+         
+          echo '<a class="button wpmlsync__button" href="https://applications.mercadolibre.com/" target="_blank">'.__('Manage your Mercado Libre Applications','wp-mercadolibre-sync').'</a>';
         } 
       ?> 
 

@@ -1,5 +1,11 @@
 <?php
 
+function wpmlsync_print_pre($a){
+	echo "<pre>";
+	print_r($a);
+	echo "</pre>";
+}
+
 function wp_mercadolibre_sync_meli_code_array(){
 	$meli_code_array = array(
 			0 => array(
@@ -194,4 +200,78 @@ function wp_mercadolibre_sync_get_template($template='',$part=''){
 	if($template != ''){
 		return $template;
 	} 
+}
+
+
+function wp_mercadolibre_sync_get_item_description($item, $meli){
+	/*
+	ej: https://api.mercadolibre.com/items/$ITEM_ID/description
+	*/ 
+	$description = $meli->get( '/items/'.$item->id.'/description' );
+	if(empty($description)) return false;
+
+	return $description['body']->plain_text;
+}
+ 
+function wp_mercadolibre_sync_get_item_pictures($item){ 
+	$return = array();
+	$pictures = $item->pictures;  
+	$i = 0;
+	foreach($pictures as $picture){ 
+		$return['images'][] = array(
+			'src' => $picture->url,
+			'position' => $i
+		);
+		$i++;
+	}
+	return $return;
+}
+function wp_mercadolibre_sync_get_and_upload_item_pictures($item){
+	$return = array();
+	$pictures = $item->pictures; 
+	$images = array(); // images url array of product
+	foreach ($pictures as $picture){ 
+		$images[] = $picture->url;
+	}
+	if(!empty($images)){
+		function uploadMedia($image_url){
+			require_once( ABSPATH . 'wp-admin/includes/image.php');
+			require_once( ABSPATH . 'wp-admin/includes/file.php');
+			require_once( ABSPATH . 'wp-admin/includes/media.php');
+			$media = media_sideload_image($image_url,0);
+			$attachments = get_posts(array(
+				'post_type' => 'attachment',
+				'post_status' => null,
+				'post_parent' => 0,
+				'orderby' => 'post_date',
+				'order' => 'DESC'
+			));
+			return $attachments[0]->ID;
+		} 
+		$productImagesIDs = array();  
+		foreach($images as $image){
+			$mediaID = uploadMedia($image);  
+			if($mediaID) $productImagesIDs[] = $mediaID; 
+		}
+		if($productImagesIDs){
+			$return['image_id'] = $productImagesIDs[0];
+			//$objProduct->set_image_id($productImagesIDs[0]); 
+			if(count($productImagesIDs) > 1){
+				$return['gallery_image_ids'] = $productImagesIDs;
+				//$objProduct->set_gallery_image_ids($productImagesIDs);
+			}
+			$i = 0;
+			foreach($productImagesIDs as $img){
+				$src = wp_get_attachment_image_src($img, 'large');
+				$src = $src[0];
+				$return['images'][] = array(
+					'src' => $src,
+					'position' => $i
+				);
+				$i++;
+			}
+
+			return $return;
+		}
+	}
 }

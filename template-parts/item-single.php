@@ -17,9 +17,9 @@ if( empty($_item['body']->id) ) {
   echo "not_found";
   return false;
 }
-echo "<pre>";
-//print_r($_item);
-echo "</pre>";
+
+//wpmlsync_print_pre($_item);
+
 $body = $_item['body'];
 $id = $body->id;
 $title = $body->title;
@@ -54,7 +54,7 @@ $category_id = $body->category_id;
         	 <div class="gpy-2">
         	 	<a target="_blank" href="<?php echo $permalink;?>" class="btn btn-primary"><?php echo _e('See in Mercado Libre','wp-mercadolibre-sync'); ?></a>
         	 </div>
-
+           <?php apply_filters('wpmlsync/item-single/content/after','', $body); ?>
       	</div>
       </div>
     </div>

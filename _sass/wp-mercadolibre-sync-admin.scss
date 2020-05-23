@@ -33,6 +33,11 @@ $colors: map-merge(
 	.wp-mercadolibre-sync .color-#{$color}{
 		color:$value;
 	}
+	.wp-mercadolibre-sync .button-#{$color}{
+		background-color:$value!important;
+		border-color:$value!important;
+		color:#fff;
+	}
 }
 
 .wp-mercadolibre-sync{
@@ -59,6 +64,15 @@ $colors: map-merge(
 	height: 48px!important;
 	line-height: 1!important;
 	font-size: 16px!important;
+}
+.wpmlsync__button_sm{
+	padding:0 1em!important;
+	border-radius:0!important;
+	box-shadow:none!important;
+	text-shadow:none!important;
+	height: 36px!important;
+	line-height: 1!important;
+	font-size: 13px!important;
 }
 .wpmlsync__col_buttons{
 	text-align:center;
@@ -208,3 +222,104 @@ $colors: map-merge(
  	top:0;
  	right:0;
  }
+
+
+ tr.doing_ajax{
+ 	td{
+ 		opacity:.8;
+ 	}
+ }
+
+ .sync_up__button,
+ .sync_re__button,
+ .sync__button{ 
+ 		position:relative;
+ 		.spinner{
+ 			position:absolute;
+ 			top:0;
+ 			left:50%;
+ 			opacity:1;
+ 			bottom:0;
+ 			float:none;
+ 			    transform: translate(-20px, 0px);
+ 		}
+
+ 		&.d-none{
+ 			display:none;
+ 		}
+ }
+
+[data-load-items]{
+	position:relative;
+	.spinner{
+		position:absolute;
+		top:50%;
+		left:50%;
+		opacity:1; 
+		float:none;
+		transform: translate(-20px, -33px);
+	}
+}
+ 
+ .wpmlsync_list_table{
+	.column-thumb {
+		width: 52px;
+		text-align: center;
+		white-space: nowrap;
+	}
+	.tips {
+	    cursor: help;
+	    text-decoration: none;
+	}
+	span.wc-image{
+		display: block;
+		text-indent: -9999px;
+		position: relative;
+		height: 1em;
+		width: 1em;
+		margin: 0 auto;
+		&::before {
+	    font-family: Dashicons;
+	    speak: none;
+	    font-weight: 400;
+	    text-transform: none;
+	    line-height: 1;
+	    -webkit-font-smoothing: antialiased;
+	    text-indent: 0px;
+	    position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+	    content: "";
+	    font-variant: normal;
+	    margin: 0px;
+		}
+ 	}
+}
+
+
+tr.doing_ajax{
+	background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+	background-size: 1rem 1rem;
+	background-color: deepskyblue!important;
+	-webkit-animation: progress-bar-stripes 1s linear infinite;
+	animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  from { background-position: 1rem 0; }
+  to { background-position: 0 0; }
+}
+
+
+
+.ml_cat_list{
+	li{
+		padding:8px;
+	}
+	ul{
+		padding-left:1rem;
+	}
+}

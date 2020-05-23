@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
@@ -5,23 +6,58 @@
 .wp-mercadolibre-sync .color-primary {
   color: #3483fa; }
 
+.wp-mercadolibre-sync .button-primary {
+  background-color: #3483fa !important;
+  border-color: #3483fa !important;
+  color: #fff; }
+
 .wp-mercadolibre-sync .color-secondary {
   color: #fafafa; }
+
+.wp-mercadolibre-sync .button-secondary {
+  background-color: #fafafa !important;
+  border-color: #fafafa !important;
+  color: #fff; }
 
 .wp-mercadolibre-sync .color-success {
   color: #28a745; }
 
+.wp-mercadolibre-sync .button-success {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: #fff; }
+
 .wp-mercadolibre-sync .color-info {
   color: #17a2b8; }
+
+.wp-mercadolibre-sync .button-info {
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+  color: #fff; }
 
 .wp-mercadolibre-sync .color-warning {
   color: #ffc107; }
 
+.wp-mercadolibre-sync .button-warning {
+  background-color: #ffc107 !important;
+  border-color: #ffc107 !important;
+  color: #fff; }
+
 .wp-mercadolibre-sync .color-danger {
   color: #dc3545; }
 
+.wp-mercadolibre-sync .button-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #fff; }
+
 .wp-mercadolibre-sync .color-yellow {
   color: #fff159; }
+
+.wp-mercadolibre-sync .button-yellow {
+  background-color: #fff159 !important;
+  border-color: #fff159 !important;
+  color: #fff; }
 
 .wp-mercadolibre-sync #poststuff {
   padding-top: 0; }
@@ -38,6 +74,15 @@
   height: 48px !important;
   line-height: 1 !important;
   font-size: 16px !important; }
+
+.wpmlsync__button_sm {
+  padding: 0 1em !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  height: 36px !important;
+  line-height: 1 !important;
+  font-size: 13px !important; }
 
 .wpmlsync__col_buttons {
   text-align: center; }
@@ -159,5 +204,86 @@
   position: absolute;
   top: 0;
   right: 0; }
+
+tr.doing_ajax td {
+  opacity: .8; }
+
+.sync_up__button,
+.sync_re__button,
+.sync__button {
+  position: relative; }
+  .sync_up__button .spinner,
+  .sync_re__button .spinner,
+  .sync__button .spinner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    opacity: 1;
+    bottom: 0;
+    float: none;
+    transform: translate(-20px, 0px); }
+  .sync_up__button.d-none,
+  .sync_re__button.d-none,
+  .sync__button.d-none {
+    display: none; }
+
+[data-load-items] {
+  position: relative; }
+  [data-load-items] .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    float: none;
+    transform: translate(-20px, -33px); }
+
+.wpmlsync_list_table .column-thumb {
+  width: 52px;
+  text-align: center;
+  white-space: nowrap; }
+.wpmlsync_list_table .tips {
+  cursor: help;
+  text-decoration: none; }
+.wpmlsync_list_table span.wc-image {
+  display: block;
+  text-indent: -9999px;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  margin: 0 auto; }
+  .wpmlsync_list_table span.wc-image::before {
+    font-family: Dashicons;
+    speak: none;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-indent: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    content: "";
+    font-variant: normal;
+    margin: 0px; }
+
+tr.doing_ajax {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+  background-color: deepskyblue !important;
+  -webkit-animation: progress-bar-stripes 1s linear infinite;
+  animation: progress-bar-stripes 1s linear infinite; }
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0; }
+  to {
+    background-position: 0 0; } }
+.ml_cat_list li {
+  padding: 8px; }
+.ml_cat_list ul {
+  padding-left: 1rem; }
 
 /*# sourceMappingURL=wp-mercadolibre-sync-admin.css.map */

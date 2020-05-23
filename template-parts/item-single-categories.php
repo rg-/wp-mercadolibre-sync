@@ -17,12 +17,25 @@ if( empty($categories['body']->id) ) {
 }else{
   ?>
   <ul>
-    <li><?php echo $categories['body']->name; ?></li>
+    <?php 
+    // ->children_categories 
+    $category_id = $categories['body']->id; 
+
+    if(!empty($categories['body']->path_from_root)){
+      $path_from_root = $categories['body']->path_from_root;
+      foreach ($path_from_root as $path) {
+        // wpmlsync_print_pre($path); 
+        if($category_id!=$path->id){
+        ?>
+        <li><?php echo $path->id; ?> <?php echo $path->name; ?></li>
+        <?php
+        }
+      }
+    }?>
+    <ul><li><?php echo $category_id; ?> <?php echo $categories['body']->name; ?></li></ul>
   </ul>
   <?php
 }
-//echo "<pre>";
-//print_r($categories);
-//echo "</pre>";
+
 
 ?>

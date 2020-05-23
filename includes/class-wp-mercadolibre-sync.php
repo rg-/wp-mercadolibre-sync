@@ -66,7 +66,6 @@ class Wp_Mercadolibre_Sync {
 	 */
 	protected $db_version;
 
-
 	/**
 	 * Define the core functionality of the plugin.
 	 *
@@ -87,7 +86,7 @@ class Wp_Mercadolibre_Sync {
 		} else {
 			$this->db_version = '1.0';
 		}
-		$this->plugin_name = 'wp-mercadolibre-sync'; 
+		$this->plugin_name = 'wp-mercadolibre-sync';
 
 		$this->load_dependencies(); 
 		$this->set_locale();
@@ -162,9 +161,14 @@ class Wp_Mercadolibre_Sync {
 
 	}  
 
-
-	private function load_modules() {
-
+	public function load_modules() { 
+		$modules = array();
+		if ( class_exists( 'WooCommerce' ) ) {
+			$modules[] = 'woocommerce';
+		}
+		foreach ($modules as $module){
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/'.$module.'/wp-mercadolibre-sync-'.$module.'.php';
+		}
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'modules/wp-mercadolibre-sync-shortcodes.php';
 	}
 
@@ -198,7 +202,20 @@ class Wp_Mercadolibre_Sync {
 		$plugin_admin = new Wp_Mercadolibre_Sync_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup', 99 );
+		
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' ); 
+
+		if ( is_admin() && ( ! wp_doing_ajax() ) ) { // is this needed??
+			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init_settings', 1 );
+			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_register_settings', 2 ); 
+			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
+		}
+
+		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
 
 		/* 
 		// could be usedfull do something on sessin in/out on future....
@@ -207,24 +224,6 @@ class Wp_Mercadolibre_Sync {
 		$this->loader->add_action( 'wp_login', $plugin_admin, 'session_end');
 		$this->loader->add_action( 'end_session_action', $plugin_admin, 'session_end');
 		*/
-
-		// TODO, put some widget with status and so on on dashboard
-		// $this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup', 99 );
-		
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
-		
-
-		if ( is_admin() && ( ! wp_doing_ajax() ) ) { // is this needed??
-			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init_settings', 1 );
-			$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_register_settings', 2 );
-
-			$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
-		}
-
-		// add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 )
-		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
-
-
 	}
 
 	/**

@@ -1,8 +1,9 @@
 <?php
-
+// print_r($item);
 // passed $item [obj]
 
-$body = $item->body;
+// $body = $item->body;
+$body = $item;
 $id = $body->id;
 $title = $body->title;
 $permalink = $body->permalink;  
@@ -14,14 +15,7 @@ $attributes = $body->descriptions; // array
 
 $date_created = $body->date_created; 
 $last_updated = $body->last_updated; 
-
-
-
-
-
-
-
-
+ 
 ?>
 <div class="col-12 gmy-1">
 	<div class="card">
@@ -49,6 +43,13 @@ $last_updated = $body->last_updated;
       	</div>
       	<div class="col-md-3 d-flex align-items-center justify-content-center"> 
       		<a target="_blank" href="<?php echo $permalink;?>" class="btn btn-primary"><?php echo _e('See in Mercado Libre','wp-mercadolibre-sync'); ?></a>
+          <?php
+
+          $single_item_page = 190;
+          $single_permalink = get_permalink(190);
+
+          ?>
+          <a target="_blank" href="<?php echo $single_permalink;?>?itemId=<?php echo $id; ?>" class="btn btn-secondary"><?php echo _e('See in Single Template','wp-mercadolibre-sync'); ?></a>
       	</div>
       </div>
     </div>

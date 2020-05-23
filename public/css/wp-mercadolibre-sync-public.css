@@ -1,4 +1,2 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+[data-item-id]{position:relative}[data-item-id] .spinner{background-color:rgba(255,255,255,0.7);background-image:url(../images/tail-spin.svg);background-repeat:no-repeat;background-position:center center;background-size:24px auto;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;display:none;transition:all 0.5s ease;position:absolute}[data-item-id] .spinner.is-active{display:block}
+/*# sourceMappingURL=wp-mercadolibre-sync-public.css.map */
