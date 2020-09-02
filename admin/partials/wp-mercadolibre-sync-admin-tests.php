@@ -22,7 +22,7 @@ $meli = new Meli($appId, $secretKey);
         <div class="wpmlsync__card">
 
             <input type="hidden" readonly id="test_user" name="test_user" class="regular-text" value="1" >
-            <input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-debug" >
+            <input type="hidden" readonly id="page" name="page" class="regular-text" value="wp-mercadolibre-sync-tests" >
 
             <h2 class="wpmlsync__postbox-title"><?php echo __( 'Create "test" user', 'wp-mercadolibre-sync' ); ?></h2>
             <p class="about-description"><?php echo __( 'To create a user test you must use a token from a real account. For development and testing, it is advisable to create two test accounts, one to use as a seller, and another to use as a buyer so that you can make comments and purchases.', 'wp-mercadolibre-sync' ); ?></p>
